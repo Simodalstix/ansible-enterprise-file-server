@@ -17,6 +17,13 @@ backup-test:
 prod-deploy:
 	ansible-playbook -i inventories/prod/hosts.yml playbooks/site.yml
 
+# VM Management
+shutdown:
+	ansible-playbook -i inventories/dev/hosts.yml playbooks/shutdown.yml
+
+startup-check:
+	ansible-playbook -i inventories/dev/hosts.yml playbooks/startup-check.yml
+
 # Utility commands
 clean:
 	ansible-playbook -i inventories/dev/hosts.yml playbooks/cleanup.yml

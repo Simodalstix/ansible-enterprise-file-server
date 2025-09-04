@@ -1,0 +1,13 @@
+# Cloud Extension Configuration
+cloud_provider: "{{ cloud | default('none') }}"
+cloud_region: "{{ region | default('eastus') }}"
+
+# Extension Flags
+extensions:
+  aws: "{{ enable_aws | default(false) }}"
+  azure: "{{ enable_azure | default(false) }}"
+  kubernetes: "{{ enable_k8s | default(false) }}"
+
+# Cloud Storage Sync
+cloud_sync_enabled: "{{ extensions[cloud_provider] | default(false) }}"
+cloud_sync_schedule: "0 3 * * *"

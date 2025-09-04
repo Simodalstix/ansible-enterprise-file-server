@@ -1,0 +1,10 @@
+# Active Directory Configuration
+ad_domain: simo.local
+ad_server: 192.168.198.10
+ad_admin_user: administrator
+ad_realm: "{{ ad_domain.upper() }}"
+
+# Kerberos Configuration
+krb5_default_realm: "{{ ad_realm }}"
+krb5_ticket_lifetime: 24h
+krb5_renew_lifetime: 7d

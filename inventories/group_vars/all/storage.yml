@@ -1,0 +1,13 @@
+# Storage Configuration
+storage_root: /srv/shares
+backup_root: /srv/backups
+
+# Quota Configuration
+quota_enabled: true
+quota_soft_limit: 1G
+quota_hard_limit: 2G
+
+# Backup Configuration
+backup_retention_days: 30
+backup_schedule: "0 2 * * *"
+backup_compression: true

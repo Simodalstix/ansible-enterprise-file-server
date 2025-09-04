@@ -1,0 +1,10 @@
+---
+- name: Shutdown All VMs
+  hosts: all
+  become: yes
+  tasks:
+    - name: Shutdown system
+      command: shutdown -h now
+      async: 1
+      poll: 0
+      ignore_errors: yes

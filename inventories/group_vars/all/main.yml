@@ -1,0 +1,13 @@
+# Core Infrastructure Configuration
+project_name: enterprise-file-server
+environment: "{{ env | default('dev') }}"
+
+# Network Configuration  
+network_subnet: 192.168.198.0/24
+dns_servers:
+  - 192.168.198.10  # AD Server
+  - 8.8.8.8
+
+# Security Configuration
+firewall_enabled: true
+security_hardening: true
