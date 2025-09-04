@@ -1,0 +1,54 @@
+---
+- name: Health Check - File Server
+  hosts: file_servers
+  become: yes
+  tasks:
+    - name: Check Samba service
+      systemd:
+        name: smbd
+      register: samba_status
+      
+    - name: Check NFS service
+      systemd:
+        name: nfs-kernel-server
+      register: nfs_status
+      
+    - name: Test AD connectivity
+      command: wbinfo -t
+      register: ad_test
+      failed_when: ad_test.rc != 0
+      
+    - name: Display service status
+      debug:
+        msg: "Samba: {{ samba_status.status.ActiveState }}, NFS: {{ nfs_status.status.ActiveState }}, AD Trust: {{ 'OK' if ad_test.rc == 0 else 'FAILED' }}"
+
+- name: Health Check - Backup Server
+  hosts: backup_servers
+  become: yes
+  tasks:
+    - name: Check backup directory
+      stat:
+        path: "{{ backup_root }}/latest"
+      register: latest_backup
+      
+    - name: Display backup status
+      debug:
+        msg: "Latest backup: {{ 'Available' if latest_backup.stat.exists else 'Missing' }}"
+
+- name: Health Check - Client
+  hosts: clients
+  become: yes
+  tasks:
+    - name: Check autofs service
+      systemd:
+        name: autofs
+      register: autofs_status
+      
+    - name: Test mount access
+      command: ls /mnt/shares/shared
+      register: mount_test
+      failed_when: false
+      
+    - name: Display client status
+      debug:
+        msg: "Autofs: {{ autofs_status.status.ActiveState }}, Mount test: {{ 'OK' if mount_test.rc == 0 else 'FAILED' }}"

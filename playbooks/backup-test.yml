@@ -1,0 +1,17 @@
+---
+- name: Test Backup System
+  hosts: backup_servers
+  become: yes
+  tasks:
+    - name: Run manual backup
+      command: /usr/local/bin/backup.sh
+      register: backup_result
+      
+    - name: Verify backup completed
+      stat:
+        path: "{{ backup_root }}/latest"
+      register: backup_check
+      
+    - name: Display backup test results
+      debug:
+        msg: "Backup test: {{ 'PASSED' if backup_check.stat.exists else 'FAILED' }}"
