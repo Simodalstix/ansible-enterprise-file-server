@@ -1,0 +1,22 @@
+---
+- name: Test Enhanced Structure
+  hosts: localhost
+  connection: local
+  gather_facts: no
+  vars:
+    ad_domain: simo.local
+    storage_root: /srv/shares
+    extensions:
+      aws: false
+      azure: false
+  tasks:
+    - name: Test variable loading
+      debug:
+        msg: |
+          AD Domain: {{ ad_domain }}
+          Storage Root: {{ storage_root }}
+          Extensions: {{ extensions }}
+          
+    - name: Test role path resolution
+      debug:
+        msg: "Roles path includes extensions: {{ ansible_config.get('defaults', 'roles_path') }}"

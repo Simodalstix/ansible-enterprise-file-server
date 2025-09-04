@@ -1,0 +1,10 @@
+---
+- name: Deploy AWS Extensions
+  hosts: file_servers
+  become: yes
+  vars:
+    cloud_provider: aws
+    enable_aws: true
+  roles:
+    - role: extensions/aws/roles/s3-sync
+      when: extensions.aws

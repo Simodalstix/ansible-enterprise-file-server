@@ -1,16 +1,16 @@
 # File Server Specific Configuration
-file_server_ip: 192.168.198.20
+file_server_ip: 192.168.198.135
 
 # Samba Configuration
 smb_signing: mandatory
 smb_workgroup: "{{ ad_domain.split('.')[0].upper() }}"
 
-# NFS Configuration  
+# NFS Configuration
 nfs_security: krb5p
 nfs_exports:
   - path: "{{ storage_root }}/nfs/shared"
     clients: "{{ network_subnet }}"
     options: "rw,sync,no_subtree_check,sec={{ nfs_security }}"
-  - path: "{{ storage_root }}/nfs/users"  
+  - path: "{{ storage_root }}/nfs/users"
     clients: "{{ network_subnet }}"
     options: "rw,sync,no_subtree_check,sec={{ nfs_security }}"

@@ -1,0 +1,225 @@
+2025-09-04 20:09:09,851 p=340238 u=simoda n=ansible | playbook: playbooks/site.yml
+2025-09-04 20:10:05,130 p=340693 u=simoda n=ansible | {
+    "_meta": {
+        "hostvars": {
+            "backup-server": {
+                "ansible_host": "192.168.198.21",
+                "ansible_ssh_common_args": "-o StrictHostKeyChecking=no",
+                "ansible_ssh_private_key_file": "~/.ssh/id_rsa",
+                "ansible_user": "ubuntu"
+            },
+            "client-workstation": {
+                "ansible_host": "192.168.198.22",
+                "ansible_ssh_common_args": "-o StrictHostKeyChecking=no",
+                "ansible_ssh_private_key_file": "~/.ssh/id_rsa",
+                "ansible_user": "ubuntu"
+            },
+            "file-server": {
+                "ansible_host": "192.168.198.20",
+                "ansible_ssh_common_args": "-o StrictHostKeyChecking=no",
+                "ansible_ssh_private_key_file": "~/.ssh/id_rsa",
+                "ansible_user": "ubuntu"
+            }
+        }
+    },
+    "all": {
+        "children": [
+            "ungrouped",
+            "file_servers",
+            "backup_servers",
+            "clients"
+        ]
+    },
+    "backup_servers": {
+        "hosts": [
+            "backup-server"
+        ]
+    },
+    "clients": {
+        "hosts": [
+            "client-workstation"
+        ]
+    },
+    "file_servers": {
+        "hosts": [
+            "file-server"
+        ]
+    }
+}
+2025-09-04 20:17:48,805 p=344428 u=simoda n=ansible | PLAY [Ansible Ad-Hoc] **********************************************************
+2025-09-04 20:17:48,836 p=344428 u=simoda n=ansible | TASK [debug] *******************************************************************
+2025-09-04 20:17:48,881 p=344428 u=simoda n=ansible | ok: [file-server] => 
+  hostvars[inventory_hostname]:
+    ansible_check_mode: false
+    ansible_config_file: /home/simoda/dev/projects/ansible-enterprise-file-server/ansible.cfg
+    ansible_diff_mode: false
+    ansible_facts: {}
+    ansible_forks: 5
+    ansible_host: 192.168.198.20
+    ansible_inventory_sources:
+    - /home/simoda/dev/projects/ansible-enterprise-file-server/inventories/dev/hosts.yml
+    ansible_limit: file-server
+    ansible_playbook_python: /usr/bin/python3
+    ansible_ssh_common_args: -o StrictHostKeyChecking=no
+    ansible_ssh_private_key_file: ~/.ssh/id_rsa
+    ansible_user: ubuntu
+    ansible_verbosity: 0
+    ansible_version:
+      full: 2.16.3
+      major: 2
+      minor: 16
+      revision: 3
+      string: 2.16.3
+    group_names:
+    - file_servers
+    groups:
+      all:
+      - file-server
+      - backup-server
+      - client-workstation
+      backup_servers:
+      - backup-server
+      clients:
+      - client-workstation
+      file_servers:
+      - file-server
+      ungrouped: []
+    inventory_dir: /home/simoda/dev/projects/ansible-enterprise-file-server/inventories/dev
+    inventory_file: /home/simoda/dev/projects/ansible-enterprise-file-server/inventories/dev/hosts.yml
+    inventory_hostname: file-server
+    inventory_hostname_short: file-server
+    omit: __omit_place_holder__d2e6f6f2992fb92bd9e0ccdadef87344fbef86c2
+    playbook_dir: /home/simoda/dev/projects/ansible-enterprise-file-server
+2025-09-04 20:17:48,884 p=344428 u=simoda n=ansible | PLAY RECAP *********************************************************************
+2025-09-04 20:17:48,885 p=344428 u=simoda n=ansible | file-server                : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2025-09-04 20:17:59,404 p=344528 u=simoda n=ansible | PLAY [Ansible Ad-Hoc] **********************************************************
+2025-09-04 20:17:59,439 p=344528 u=simoda n=ansible | TASK [debug] *******************************************************************
+2025-09-04 20:17:59,480 p=344528 u=simoda n=ansible | ok: [file-server] => 
+  ad_domain: VARIABLE IS NOT DEFINED!
+2025-09-04 20:17:59,483 p=344528 u=simoda n=ansible | PLAY RECAP *********************************************************************
+2025-09-04 20:17:59,483 p=344528 u=simoda n=ansible | file-server                : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2025-09-04 20:18:51,727 p=344978 u=simoda n=ansible | PLAY [Ansible Ad-Hoc] **********************************************************
+2025-09-04 20:18:51,758 p=344978 u=simoda n=ansible | TASK [debug] *******************************************************************
+2025-09-04 20:18:51,785 p=344978 u=simoda n=ansible | ok: [file-server] => 
+  ad_domain: VARIABLE IS NOT DEFINED!
+2025-09-04 20:18:51,788 p=344978 u=simoda n=ansible | PLAY RECAP *********************************************************************
+2025-09-04 20:18:51,788 p=344978 u=simoda n=ansible | file-server                : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2025-09-04 20:23:15,396 p=347142 u=simoda n=ansible | PLAY [Ansible Ad-Hoc] **********************************************************
+2025-09-04 20:23:15,427 p=347142 u=simoda n=ansible | TASK [debug] *******************************************************************
+2025-09-04 20:23:15,453 p=347142 u=simoda n=ansible | ok: [file-server] => 
+  ad_domain: simo.local
+2025-09-04 20:23:15,457 p=347142 u=simoda n=ansible | PLAY RECAP *********************************************************************
+2025-09-04 20:23:15,457 p=347142 u=simoda n=ansible | file-server                : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2025-09-04 20:23:25,710 p=347248 u=simoda n=ansible | PLAY [Ansible Ad-Hoc] **********************************************************
+2025-09-04 20:23:25,740 p=347248 u=simoda n=ansible | TASK [debug] *******************************************************************
+2025-09-04 20:23:25,769 p=347248 u=simoda n=ansible | ok: [file-server] => 
+  extensions: VARIABLE IS NOT DEFINED!
+2025-09-04 20:23:25,773 p=347248 u=simoda n=ansible | PLAY RECAP *********************************************************************
+2025-09-04 20:23:25,773 p=347248 u=simoda n=ansible | file-server                : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2025-09-04 20:23:41,158 p=347408 u=simoda n=ansible | playbook: playbooks/azure-extend.yml
+2025-09-04 20:27:08,379 p=349140 u=simoda n=ansible | playbook: playbooks/aws-extend.yml
+2025-09-04 20:27:32,619 p=349344 u=simoda n=ansible | PLAY [Deploy Enterprise File Server Platform] **********************************
+2025-09-04 20:27:32,627 p=349344 u=simoda n=ansible | TASK [Gathering Facts] *********************************************************
+2025-09-04 20:27:35,455 p=349344 u=simoda n=ansible | [WARNING]: Unhandled error in Python interpreter discovery for host file-
+server: Failed to connect to the host via ssh: ssh: connect to host
+192.168.198.20 port 22: No route to host
+
+2025-09-04 20:27:45,478 p=349344 u=simoda n=ansible | fatal: [file-server]: UNREACHABLE! => changed=false 
+  msg: |-
+    Data could not be sent to remote host "192.168.198.20". Make sure this host can be reached over ssh: ssh: connect to host 192.168.198.20 port 22: Connection timed out
+  unreachable: true
+2025-09-04 20:27:45,479 p=349344 u=simoda n=ansible | PLAY RECAP *********************************************************************
+2025-09-04 20:27:45,479 p=349344 u=simoda n=ansible | file-server                : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
+2025-09-04 20:45:17,926 p=358097 u=simoda n=ansible | PLAY [Ansible Ad-Hoc] **********************************************************
+2025-09-04 20:45:17,967 p=358097 u=simoda n=ansible | TASK [ping] ********************************************************************
+2025-09-04 20:45:20,778 p=358097 u=simoda n=ansible | [WARNING]: Unhandled error in Python interpreter discovery for host backup-
+server: Failed to connect to the host via ssh: ssh: connect to host
+192.168.198.21 port 22: No route to host
+
+2025-09-04 20:45:20,779 p=358097 u=simoda n=ansible | [WARNING]: Unhandled error in Python interpreter discovery for host client-
+workstation: Failed to connect to the host via ssh: ssh: connect to host
+192.168.198.22 port 22: No route to host
+
+2025-09-04 20:45:28,112 p=358097 u=simoda n=ansible | [WARNING]: Unhandled error in Python interpreter discovery for host file-
+server: Failed to connect to the host via ssh: ssh: connect to host
+192.168.198.20 port 22: Connection timed out
+
+2025-09-04 20:45:30,800 p=358097 u=simoda n=ansible | fatal: [backup-server]: UNREACHABLE! => changed=false 
+  msg: |-
+    Data could not be sent to remote host "192.168.198.21". Make sure this host can be reached over ssh: ssh: connect to host 192.168.198.21 port 22: Connection timed out
+  unreachable: true
+2025-09-04 20:45:30,800 p=358097 u=simoda n=ansible | fatal: [client-workstation]: UNREACHABLE! => changed=false 
+  msg: |-
+    Data could not be sent to remote host "192.168.198.22". Make sure this host can be reached over ssh: ssh: connect to host 192.168.198.22 port 22: Connection timed out
+  unreachable: true
+2025-09-04 20:45:38,131 p=358097 u=simoda n=ansible | fatal: [file-server]: UNREACHABLE! => changed=false 
+  msg: |-
+    Data could not be sent to remote host "192.168.198.20". Make sure this host can be reached over ssh: ssh: connect to host 192.168.198.20 port 22: Connection timed out
+  unreachable: true
+2025-09-04 20:45:38,132 p=358097 u=simoda n=ansible | PLAY RECAP *********************************************************************
+2025-09-04 20:45:38,132 p=358097 u=simoda n=ansible | backup-server              : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
+2025-09-04 20:45:38,132 p=358097 u=simoda n=ansible | client-workstation         : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
+2025-09-04 20:45:38,132 p=358097 u=simoda n=ansible | file-server                : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
+2025-09-04 21:05:38,867 p=368186 u=simoda n=ansible | PLAY [Ansible Ad-Hoc] **************************************************************************************************
+2025-09-04 21:05:38,897 p=368186 u=simoda n=ansible | TASK [ping] ************************************************************************************************************
+2025-09-04 21:05:39,196 p=368186 u=simoda n=ansible | [WARNING]: Unhandled error in Python interpreter discovery for host backup-server: Failed to connect to the host via
+ssh: Warning: Permanently added '192.168.198.12' (ED25519) to the list of known hosts.  ubuntu@192.168.198.12:
+Permission denied (publickey,password).
+
+2025-09-04 21:05:39,371 p=368186 u=simoda n=ansible | fatal: [backup-server]: UNREACHABLE! => changed=false 
+  msg: |-
+    Data could not be sent to remote host "192.168.198.12". Make sure this host can be reached over ssh: Warning: Permanently added '192.168.198.12' (ED25519) to the list of known hosts.
+    ubuntu@192.168.198.12: Permission denied (publickey,password).
+  unreachable: true
+2025-09-04 21:05:39,885 p=368186 u=simoda n=ansible | ok: [file-server]
+2025-09-04 21:05:40,090 p=368186 u=simoda n=ansible | ok: [client-workstation]
+2025-09-04 21:05:40,095 p=368186 u=simoda n=ansible | PLAY RECAP *************************************************************************************************************
+2025-09-04 21:05:40,096 p=368186 u=simoda n=ansible | backup-server              : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
+2025-09-04 21:05:40,096 p=368186 u=simoda n=ansible | client-workstation         : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2025-09-04 21:05:40,096 p=368186 u=simoda n=ansible | file-server                : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2025-09-04 21:05:40,631 p=368214 u=simoda n=ansible | playbook: playbooks/site.yml
+2025-09-04 21:17:32,113 p=373985 u=simoda n=ansible | PLAY [Ansible Ad-Hoc] **********************************************************
+2025-09-04 21:17:32,152 p=373985 u=simoda n=ansible | TASK [ping] ********************************************************************
+2025-09-04 21:17:32,461 p=373985 u=simoda n=ansible | [WARNING]: Unhandled error in Python interpreter discovery for host backup-
+server: Failed to connect to the host via ssh: Warning: Permanently added
+'192.168.198.12' (ED25519) to the list of known hosts.  ubuntu@192.168.198.12:
+Permission denied (publickey,password).
+
+2025-09-04 21:17:32,666 p=373985 u=simoda n=ansible | fatal: [backup-server]: UNREACHABLE! => changed=false 
+  msg: |-
+    Data could not be sent to remote host "192.168.198.12". Make sure this host can be reached over ssh: Warning: Permanently added '192.168.198.12' (ED25519) to the list of known hosts.
+    ubuntu@192.168.198.12: Permission denied (publickey,password).
+  unreachable: true
+2025-09-04 21:17:33,307 p=373985 u=simoda n=ansible | ok: [client-workstation]
+2025-09-04 21:17:33,377 p=373985 u=simoda n=ansible | ok: [file-server]
+2025-09-04 21:17:33,382 p=373985 u=simoda n=ansible | PLAY RECAP *********************************************************************
+2025-09-04 21:17:33,382 p=373985 u=simoda n=ansible | backup-server              : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
+2025-09-04 21:17:33,382 p=373985 u=simoda n=ansible | client-workstation         : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2025-09-04 21:17:33,382 p=373985 u=simoda n=ansible | file-server                : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2025-09-04 21:18:19,916 p=374428 u=simoda n=ansible | PLAY [Ansible Ad-Hoc] **********************************************************
+2025-09-04 21:18:19,948 p=374428 u=simoda n=ansible | TASK [ping] ********************************************************************
+2025-09-04 21:18:20,316 p=374428 u=simoda n=ansible | ok: [client-workstation]
+2025-09-04 21:18:20,352 p=374428 u=simoda n=ansible | ok: [file-server]
+2025-09-04 21:18:20,663 p=374428 u=simoda n=ansible | ok: [backup-server]
+2025-09-04 21:18:20,671 p=374428 u=simoda n=ansible | PLAY RECAP *********************************************************************
+2025-09-04 21:18:20,671 p=374428 u=simoda n=ansible | backup-server              : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2025-09-04 21:18:20,671 p=374428 u=simoda n=ansible | client-workstation         : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2025-09-04 21:18:20,671 p=374428 u=simoda n=ansible | file-server                : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2025-09-04 21:18:30,110 p=374567 u=simoda n=ansible | PLAY [Ansible Ad-Hoc] **********************************************************
+2025-09-04 21:18:30,148 p=374567 u=simoda n=ansible | TASK [debug] *******************************************************************
+2025-09-04 21:18:30,175 p=374567 u=simoda n=ansible | ok: [file-server] => 
+  ad_domain: simo.local
+2025-09-04 21:18:30,179 p=374567 u=simoda n=ansible | PLAY RECAP *********************************************************************
+2025-09-04 21:18:30,179 p=374567 u=simoda n=ansible | file-server                : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2025-09-04 21:19:24,307 p=375029 u=simoda n=ansible | PLAY [Ansible Ad-Hoc] **********************************************************
+2025-09-04 21:19:24,337 p=375029 u=simoda n=ansible | TASK [debug] *******************************************************************
+2025-09-04 21:19:24,365 p=375029 u=simoda n=ansible | ok: [file-server] => 
+  file_server_ip: 192.168.198.135
+2025-09-04 21:19:24,368 p=375029 u=simoda n=ansible | PLAY RECAP *********************************************************************
+2025-09-04 21:19:24,368 p=375029 u=simoda n=ansible | file-server                : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2025-09-04 21:19:32,056 p=375110 u=simoda n=ansible | PLAY [Ansible Ad-Hoc] **********************************************************
+2025-09-04 21:19:32,086 p=375110 u=simoda n=ansible | TASK [debug] *******************************************************************
+2025-09-04 21:19:32,113 p=375110 u=simoda n=ansible | ok: [file-server] => 
+  storage_root: /srv/shares
+2025-09-04 21:19:32,117 p=375110 u=simoda n=ansible | PLAY RECAP *********************************************************************
+2025-09-04 21:19:32,117 p=375110 u=simoda n=ansible | file-server                : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   

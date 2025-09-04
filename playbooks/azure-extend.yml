@@ -1,0 +1,10 @@
+---
+- name: Deploy Azure Extensions
+  hosts: file_servers
+  become: yes
+  vars:
+    cloud_provider: azure
+    enable_azure: true
+  roles:
+    - role: extensions/azure/roles/blob-sync
+      when: extensions.azure

@@ -1,0 +1,23 @@
+#!/bin/bash
+set -e
+
+# Azure Blob Storage Sync
+SOURCE="{{ storage_root }}"
+STORAGE_ACCOUNT="{{ azure_storage_account }}"
+CONTAINER="{{ azure_container_name | default('fileserver-backup') }}"
+
+# Authenticate with service principal
+az login --service-principal \
+  --username "${AZURE_CLIENT_ID}" \
+  --password "${AZURE_CLIENT_SECRET}" \
+  --tenant "${AZURE_TENANT_ID}"
+
+# Sync to Azure Blob Storage
+az storage blob sync \
+  --account-name "${STORAGE_ACCOUNT}" \
+  --container "${CONTAINER}" \
+  --source "${SOURCE}" \
+  --delete-destination true
+
+# Log completion
+echo "$(date): Azure sync completed successfully" >> /var/log/azure-sync.log

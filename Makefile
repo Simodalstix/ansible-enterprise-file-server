@@ -17,6 +17,17 @@ backup-test:
 prod-deploy:
 	ansible-playbook -i inventories/prod/hosts.yml playbooks/site.yml
 
+# Cloud Extensions
+azure-deploy:
+	ansible-galaxy install -r requirements.yml
+	ansible-playbook -i inventories/dev/hosts.yml playbooks/site.yml
+	ansible-playbook -i inventories/dev/hosts.yml playbooks/azure-extend.yml
+
+aws-deploy:
+	ansible-galaxy install -r requirements.yml
+	ansible-playbook -i inventories/dev/hosts.yml playbooks/site.yml
+	ansible-playbook -i inventories/dev/hosts.yml playbooks/aws-extend.yml
+
 # VM Management
 shutdown:
 	ansible-playbook -i inventories/dev/hosts.yml playbooks/shutdown.yml

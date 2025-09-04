@@ -1,0 +1,29 @@
+---
+- name: Install Azure CLI
+  get_url:
+    url: https://aka.ms/InstallAzureCLIDeb
+    dest: /tmp/install-azure-cli.sh
+    mode: '0755'
+  when: cloud_sync_enabled
+
+- name: Run Azure CLI installer
+  command: /tmp/install-azure-cli.sh
+  when: cloud_sync_enabled
+  changed_when: false
+
+- name: Create Azure sync script
+  template:
+    src: azure-sync.sh.j2
+    dest: /usr/local/bin/azure-sync.sh
+    mode: '0755'
+  when: cloud_sync_enabled
+
+- name: Schedule Azure sync
+  cron:
+    name: "Azure blob sync"
+    cron_file: azure-sync
+    minute: "0"
+    hour: "3"
+    job: "/usr/local/bin/azure-sync.sh"
+    user: root
+  when: cloud_sync_enabled

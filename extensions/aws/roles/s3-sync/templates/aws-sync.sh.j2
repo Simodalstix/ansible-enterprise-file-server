@@ -1,0 +1,14 @@
+#!/bin/bash
+set -e
+
+# AWS S3 Sync
+SOURCE="{{ storage_root }}"
+S3_BUCKET="{{ aws_s3_bucket }}"
+
+# Sync to S3
+aws s3 sync "${SOURCE}" "s3://${S3_BUCKET}/fileserver-backup/" \
+  --delete \
+  --storage-class STANDARD_IA
+
+# Log completion
+echo "$(date): AWS S3 sync completed successfully" >> /var/log/aws-sync.log

@@ -1,0 +1,23 @@
+---
+- name: Install AWS CLI
+  pip:
+    name: awscli
+    state: present
+  when: cloud_sync_enabled
+
+- name: Create AWS sync script
+  template:
+    src: aws-sync.sh.j2
+    dest: /usr/local/bin/aws-sync.sh
+    mode: '0755'
+  when: cloud_sync_enabled
+
+- name: Schedule AWS sync
+  cron:
+    name: "AWS S3 sync"
+    cron_file: aws-sync
+    minute: "0"
+    hour: "3"
+    job: "/usr/local/bin/aws-sync.sh"
+    user: root
+  when: cloud_sync_enabled

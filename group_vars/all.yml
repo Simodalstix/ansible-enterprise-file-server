@@ -1,23 +1,5 @@
-# Active Directory Configuration
-ad_domain: simo.local
-ad_server: 192.168.198.10
-ad_admin_user: administrator
-
-# File Server Configuration
-file_server_ip: 192.168.198.20
-backup_server_ip: 192.168.198.21
-
-# Storage Configuration
-storage_root: /srv/shares
-backup_root: /srv/backups
-quota_soft_limit: 1G
-quota_hard_limit: 2G
-
-# Security Configuration
-smb_signing: mandatory
-nfs_security: krb5p
-firewall_enabled: true
-
-# Backup Configuration
-backup_retention_days: 30
-backup_schedule: "0 2 * * *"
+# This file has been split into multiple files in inventories/group_vars/all/
+# See:
+# - main.yml (core configuration)
+# - active_directory.yml (AD settings)
+# - storage.yml (storage configuration)
