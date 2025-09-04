@@ -1,0 +1,37 @@
+---
+- name: Install NFS packages
+  apt:
+    name:
+      - nfs-kernel-server
+      - nfs-common
+      - rpcbind
+    state: present
+
+- name: Create NFS export directories
+  file:
+    path: "{{ storage_root }}/nfs/{{ item }}"
+    state: directory
+    mode: '0755'
+  loop:
+    - shared
+    - users
+
+- name: Configure NFS exports
+  template:
+    src: exports.j2
+    dest: /etc/exports
+    backup: yes
+  notify: reload nfs
+
+- name: Start and enable NFS services
+  systemd:
+    name: "{{ item }}"
+    enabled: yes
+    state: started
+  loop:
+    - rpcbind
+    - nfs-kernel-server
+
+- name: Export NFS shares
+  command: exportfs -ra
+  changed_when: false

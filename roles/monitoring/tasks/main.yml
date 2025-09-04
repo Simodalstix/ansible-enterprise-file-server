@@ -1,0 +1,41 @@
+---
+- name: Install monitoring tools
+  apt:
+    name:
+      - quota
+      - quotatool
+    state: present
+
+- name: Enable quota on filesystem
+  mount:
+    path: /
+    src: "{{ ansible_mounts | selectattr('mount', 'equalto', '/') | map(attribute='device') | first }}"
+    fstype: "{{ ansible_mounts | selectattr('mount', 'equalto', '/') | map(attribute='fstype') | first }}"
+    opts: defaults,usrquota,grpquota
+    state: mounted
+  notify: remount root
+
+- name: Initialize quota database
+  command: quotacheck -cug /
+  register: quota_init
+  failed_when: quota_init.rc != 0 and "already exists" not in quota_init.stderr
+  changed_when: quota_init.rc == 0
+
+- name: Enable quota
+  command: quotaon /
+  register: quota_on
+  failed_when: quota_on.rc != 0 and "already on" not in quota_on.stderr
+  changed_when: quota_on.rc == 0
+
+- name: Create monitoring script
+  template:
+    src: monitor.sh.j2
+    dest: /usr/local/bin/monitor.sh
+    mode: '0755'
+
+- name: Schedule monitoring
+  cron:
+    name: "Storage monitoring"
+    minute: "*/15"
+    job: "/usr/local/bin/monitor.sh"
+    user: root

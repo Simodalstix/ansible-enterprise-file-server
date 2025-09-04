@@ -1,0 +1,8 @@
+#!/bin/bash
+set -e
+
+# Remove backups older than retention period
+find {{ backup_root }}/daily -type d -name "backup_*" -mtime +{{ backup_retention_days }} -exec rm -rf {} \;
+
+# Log cleanup
+echo "$(date): Backup cleanup completed" >> /var/log/backup.log

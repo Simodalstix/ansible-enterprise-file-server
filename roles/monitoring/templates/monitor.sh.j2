@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# Check disk usage
+USAGE=$(df -h / | awk 'NR==2 {print $5}' | sed 's/%//')
+if [ $USAGE -gt 80 ]; then
+    echo "$(date): WARNING: Disk usage is ${USAGE}%" >> /var/log/storage.log
+fi
+
+# Check quota usage
+repquota -a >> /var/log/quota.log
+
+# Check service status
+systemctl is-active --quiet smbd || echo "$(date): ERROR: Samba service down" >> /var/log/services.log
+systemctl is-active --quiet nfs-kernel-server || echo "$(date): ERROR: NFS service down" >> /var/log/services.log

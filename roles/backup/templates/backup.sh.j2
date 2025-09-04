@@ -1,0 +1,15 @@
+#!/bin/bash
+set -e
+
+BACKUP_DATE=$(date +%Y%m%d_%H%M%S)
+SOURCE="{{ file_server_ip }}:{{ storage_root }}"
+DEST="{{ backup_root }}/daily/backup_${BACKUP_DATE}"
+
+# Create backup
+rsync -avz --delete "${SOURCE}/" "${DEST}/"
+
+# Create symlink to latest
+ln -sfn "${DEST}" "{{ backup_root }}/latest"
+
+# Log completion
+echo "$(date): Backup completed successfully to ${DEST}" >> /var/log/backup.log

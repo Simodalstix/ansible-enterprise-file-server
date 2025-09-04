@@ -1,0 +1,33 @@
+---
+- name: Install autofs
+  apt:
+    name:
+      - autofs
+      - nfs-common
+    state: present
+
+- name: Configure autofs master
+  template:
+    src: auto.master.j2
+    dest: /etc/auto.master
+    backup: yes
+  notify: restart autofs
+
+- name: Configure autofs maps
+  template:
+    src: auto.shares.j2
+    dest: /etc/auto.shares
+    backup: yes
+  notify: restart autofs
+
+- name: Create mount points
+  file:
+    path: /mnt/shares
+    state: directory
+    mode: '0755'
+
+- name: Start and enable autofs
+  systemd:
+    name: autofs
+    enabled: yes
+    state: started

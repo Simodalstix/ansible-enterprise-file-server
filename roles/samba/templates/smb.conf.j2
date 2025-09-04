@@ -1,0 +1,36 @@
+[global]
+   workgroup = {{ ad_domain.split('.')[0].upper() }}
+   realm = {{ ad_domain.upper() }}
+   security = ads
+   server signing = {{ smb_signing }}
+   client signing = {{ smb_signing }}
+   
+   winbind use default domain = yes
+   winbind offline logon = false
+   winbind nss info = rfc2307
+   winbind enum users = yes
+   winbind enum groups = yes
+   
+   template shell = /bin/bash
+   template homedir = /home/%U
+   
+   idmap config * : backend = tdb
+   idmap config * : range = 3000-7999
+   idmap config {{ ad_domain.split('.')[0].upper() }} : backend = rid
+   idmap config {{ ad_domain.split('.')[0].upper() }} : range = 10000-999999
+
+[shared]
+   path = {{ storage_root }}/shared
+   browseable = yes
+   writable = yes
+   valid users = @"Domain Users"
+   create mask = 0664
+   directory mask = 0775
+
+[users]
+   path = {{ storage_root }}/users
+   browseable = yes
+   writable = yes
+   valid users = @"Domain Users"
+   create mask = 0600
+   directory mask = 0700

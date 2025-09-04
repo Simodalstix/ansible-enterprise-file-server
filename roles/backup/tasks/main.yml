@@ -1,0 +1,47 @@
+---
+- name: Install backup tools
+  apt:
+    name:
+      - rsync
+      - cron
+    state: present
+
+- name: Create backup directories
+  file:
+    path: "{{ backup_root }}/{{ item }}"
+    state: directory
+    mode: '0750'
+  loop:
+    - daily
+    - weekly
+    - monthly
+
+- name: Create backup script
+  template:
+    src: backup.sh.j2
+    dest: /usr/local/bin/backup.sh
+    mode: '0755'
+
+- name: Schedule backup job
+  cron:
+    name: "Daily file server backup"
+    cron_file: fileserver-backup
+    minute: "0"
+    hour: "2"
+    job: "/usr/local/bin/backup.sh"
+    user: root
+
+- name: Create backup cleanup script
+  template:
+    src: cleanup.sh.j2
+    dest: /usr/local/bin/backup-cleanup.sh
+    mode: '0755'
+
+- name: Schedule cleanup job
+  cron:
+    name: "Backup cleanup"
+    cron_file: backup-cleanup
+    minute: "30"
+    hour: "3"
+    job: "/usr/local/bin/backup-cleanup.sh"
+    user: root

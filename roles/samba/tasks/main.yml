@@ -1,0 +1,50 @@
+---
+- name: Install Samba packages
+  apt:
+    name:
+      - samba
+      - samba-common-bin
+      - winbind
+      - krb5-user
+      - realmd
+    state: present
+
+- name: Create storage directories
+  file:
+    path: "{{ storage_root }}/{{ item }}"
+    state: directory
+    mode: '0755'
+  loop:
+    - shared
+    - users
+
+- name: Configure Kerberos
+  template:
+    src: krb5.conf.j2
+    dest: /etc/krb5.conf
+    backup: yes
+  notify: restart samba
+
+- name: Configure Samba
+  template:
+    src: smb.conf.j2
+    dest: /etc/samba/smb.conf
+    backup: yes
+  notify: restart samba
+
+- name: Join AD domain
+  shell: |
+    echo "{{ ad_admin_password }}" | realm join -U {{ ad_admin_user }} {{ ad_domain }}
+  register: domain_join
+  failed_when: domain_join.rc != 0 and "already joined" not in domain_join.stderr
+  changed_when: domain_join.rc == 0
+
+- name: Start and enable services
+  systemd:
+    name: "{{ item }}"
+    enabled: yes
+    state: started
+  loop:
+    - smbd
+    - nmbd
+    - winbind
