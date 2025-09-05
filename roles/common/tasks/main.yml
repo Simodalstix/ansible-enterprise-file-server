@@ -1,10 +1,11 @@
 ---
-- name: Update package cache
+- name: Update package cache (Ubuntu)
   apt:
     update_cache: yes
     cache_valid_time: 3600
+  when: ansible_os_family == "Debian"
 
-- name: Install base packages
+- name: Install base packages (Ubuntu)
   apt:
     name:
       - curl
@@ -12,10 +13,34 @@
       - vim
       - htop
       - ufw
-      - chrony
     state: present
+  when: ansible_os_family == "Debian"
 
-- name: Configure firewall
+- name: Enable CRB repository (RHEL)
+  command: dnf config-manager --set-enabled crb
+  when: ansible_os_family == "RedHat"
+  ignore_errors: yes
+
+- name: Enable EPEL repository (RHEL)
+  dnf:
+    name: https://dl.fedoraproject.org/pub/epel/epel-release-latest-9.noarch.rpm
+    state: present
+    disable_gpg_check: yes
+  when: ansible_os_family == "RedHat"
+  ignore_errors: yes
+
+- name: Install base packages (RHEL)
+  dnf:
+    name:
+      - curl
+      - wget
+      - vim
+      - htop
+      - firewalld
+    state: present
+  when: ansible_os_family == "RedHat"
+
+- name: Configure firewall (Ubuntu)
   ufw:
     rule: allow
     port: "{{ item }}"
@@ -23,15 +48,48 @@
     - "22"
     - "445"
     - "2049"
-  when: firewall_enabled
+  when: firewall_enabled and ansible_os_family == "Debian"
 
-- name: Enable firewall
+- name: Enable firewall (Ubuntu)
   ufw:
     state: enabled
-  when: firewall_enabled
+  when: firewall_enabled and ansible_os_family == "Debian"
 
-- name: Configure NTP
+- name: Configure firewall (RHEL)
+  firewalld:
+    port: "{{ item }}/tcp"
+    permanent: yes
+    state: enabled
+    immediate: yes
+  loop:
+    - "22"
+    - "445"
+    - "2049"
+  when: firewall_enabled and ansible_os_family == "RedHat"
+
+- name: Enable firewall (RHEL)
   systemd:
-    name: chrony
+    name: firewalld
     enabled: yes
     state: started
+  when: firewall_enabled and ansible_os_family == "RedHat"
+
+- name: Configure NTP (Ubuntu)
+  systemd:
+    name: systemd-timesyncd
+    enabled: yes
+    state: started
+  when: ansible_os_family == "Debian"
+
+- name: Install and configure NTP (RHEL)
+  dnf:
+    name: chrony
+    state: present
+  when: ansible_os_family == "RedHat"
+
+- name: Configure NTP (RHEL)
+  systemd:
+    name: chronyd
+    enabled: yes
+    state: started
+  when: ansible_os_family == "RedHat"

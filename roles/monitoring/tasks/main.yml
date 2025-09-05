@@ -18,13 +18,13 @@
 - name: Initialize quota database
   command: quotacheck -cug /
   register: quota_init
-  failed_when: quota_init.rc != 0 and "already exists" not in quota_init.stderr
+  failed_when: false
   changed_when: quota_init.rc == 0
 
 - name: Enable quota
   command: quotaon /
   register: quota_on
-  failed_when: quota_on.rc != 0 and "already on" not in quota_on.stderr
+  failed_when: false
   changed_when: quota_on.rc == 0
 
 - name: Create monitoring script

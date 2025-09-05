@@ -1,5 +1,5 @@
 # File Server Specific Configuration
-file_server_ip: 192.168.198.135
+file_server_ip: 192.168.198.141
 
 # Samba Configuration
 smb_signing: mandatory

@@ -1,11 +1,20 @@
 ---
-- name: Install NFS packages
+- name: Install NFS packages (Ubuntu)
   apt:
     name:
       - nfs-kernel-server
       - nfs-common
       - rpcbind
     state: present
+  when: ansible_os_family == "Debian"
+
+- name: Install NFS packages (RHEL)
+  dnf:
+    name:
+      - nfs-utils
+      - rpcbind
+    state: present
+  when: ansible_os_family == "RedHat"
 
 - name: Create NFS export directories
   file:
@@ -23,7 +32,7 @@
     backup: yes
   notify: reload nfs
 
-- name: Start and enable NFS services
+- name: Start and enable NFS services (Ubuntu)
   systemd:
     name: "{{ item }}"
     enabled: yes
@@ -31,6 +40,17 @@
   loop:
     - rpcbind
     - nfs-kernel-server
+  when: ansible_os_family == "Debian"
+
+- name: Start and enable NFS services (RHEL)
+  systemd:
+    name: "{{ item }}"
+    enabled: yes
+    state: started
+  loop:
+    - rpcbind
+    - nfs-server
+  when: ansible_os_family == "RedHat"
 
 - name: Export NFS shares
   command: exportfs -ra

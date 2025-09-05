@@ -223,3 +223,1149 @@ Permission denied (publickey,password).
   storage_root: /srv/shares
 2025-09-04 21:19:32,117 p=375110 u=simoda n=ansible | PLAY RECAP *********************************************************************
 2025-09-04 21:19:32,117 p=375110 u=simoda n=ansible | file-server                : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2025-09-04 21:19:41,732 p=375223 u=simoda n=ansible | playbook: playbooks/site.yml
+2025-09-04 21:19:49,685 p=375322 u=simoda n=ansible | playbook: playbooks/azure-extend.yml
+2025-09-04 21:20:02,129 p=375427 u=simoda n=ansible | PLAY [Deploy Enterprise File Server Platform] **********************************
+2025-09-04 21:20:02,137 p=375427 u=simoda n=ansible | TASK [Gathering Facts] *********************************************************
+2025-09-04 21:20:03,963 p=375427 u=simoda n=ansible | ok: [file-server]
+2025-09-04 21:20:03,974 p=375427 u=simoda n=ansible | TASK [common : Update package cache] *******************************************
+2025-09-04 21:20:05,097 p=375427 u=simoda n=ansible | changed: [file-server]
+2025-09-04 21:20:05,102 p=375427 u=simoda n=ansible | TASK [common : Install base packages] ******************************************
+2025-09-04 21:20:06,822 p=375427 u=simoda n=ansible | changed: [file-server]
+2025-09-04 21:20:06,827 p=375427 u=simoda n=ansible | TASK [common : Configure firewall] *********************************************
+2025-09-04 21:20:07,342 p=375427 u=simoda n=ansible | ok: [file-server] => (item=22)
+2025-09-04 21:20:07,733 p=375427 u=simoda n=ansible | changed: [file-server] => (item=445)
+2025-09-04 21:20:08,153 p=375427 u=simoda n=ansible | changed: [file-server] => (item=2049)
+2025-09-04 21:20:08,161 p=375427 u=simoda n=ansible | TASK [common : Enable firewall] ************************************************
+2025-09-04 21:20:08,490 p=375427 u=simoda n=ansible | ok: [file-server]
+2025-09-04 21:20:08,494 p=375427 u=simoda n=ansible | TASK [common : Configure NTP] **************************************************
+2025-09-04 21:20:09,048 p=375427 u=simoda n=ansible | fatal: [file-server]: FAILED! => changed=false 
+  msg: 'Could not find the requested service chrony: host'
+2025-09-04 21:20:09,049 p=375427 u=simoda n=ansible | PLAY RECAP *********************************************************************
+2025-09-04 21:20:09,049 p=375427 u=simoda n=ansible | file-server                : ok=5    changed=3    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2025-09-04 21:50:39,145 p=390678 u=simoda n=ansible | PLAY [Deploy Enterprise File Server Platform] **********************************
+2025-09-04 21:50:39,152 p=390678 u=simoda n=ansible | TASK [Gathering Facts] *********************************************************
+2025-09-04 21:50:39,490 p=390678 u=simoda n=ansible | [WARNING]: Unhandled error in Python interpreter discovery for host file-
+server: Failed to connect to the host via ssh: Warning: Permanently added
+'192.168.198.141' (ED25519) to the list of known hosts.  rhel@192.168.198.141:
+Permission denied (publickey,gssapi-keyex,gssapi-with-mic,password).
+
+2025-09-04 21:50:39,595 p=390678 u=simoda n=ansible | fatal: [file-server]: UNREACHABLE! => changed=false 
+  msg: |-
+    Data could not be sent to remote host "192.168.198.141". Make sure this host can be reached over ssh: Warning: Permanently added '192.168.198.141' (ED25519) to the list of known hosts.
+    rhel@192.168.198.141: Permission denied (publickey,gssapi-keyex,gssapi-with-mic,password).
+  unreachable: true
+2025-09-04 21:50:41,160 p=390678 u=simoda n=ansible | ok: [backup-server]
+2025-09-04 21:50:41,373 p=390678 u=simoda n=ansible | ok: [client-workstation]
+2025-09-04 21:50:41,389 p=390678 u=simoda n=ansible | TASK [common : Update package cache (Ubuntu)] **********************************
+2025-09-04 21:50:51,932 p=390678 u=simoda n=ansible | changed: [client-workstation]
+2025-09-04 21:50:52,646 p=390678 u=simoda n=ansible | changed: [backup-server]
+2025-09-04 21:50:52,651 p=390678 u=simoda n=ansible | TASK [common : Install base packages (Ubuntu)] *********************************
+2025-09-04 21:50:53,535 p=390678 u=simoda n=ansible | ok: [backup-server]
+2025-09-04 21:50:53,610 p=390678 u=simoda n=ansible | ok: [client-workstation]
+2025-09-04 21:50:53,615 p=390678 u=simoda n=ansible | TASK [common : Install base packages (RHEL)] ***********************************
+2025-09-04 21:50:53,629 p=390678 u=simoda n=ansible | skipping: [backup-server]
+2025-09-04 21:50:53,634 p=390678 u=simoda n=ansible | skipping: [client-workstation]
+2025-09-04 21:50:53,638 p=390678 u=simoda n=ansible | TASK [common : Configure firewall] *********************************************
+2025-09-04 21:50:54,362 p=390678 u=simoda n=ansible | ok: [backup-server] => (item=22)
+2025-09-04 21:50:54,363 p=390678 u=simoda n=ansible | ok: [client-workstation] => (item=22)
+2025-09-04 21:50:54,874 p=390678 u=simoda n=ansible | changed: [backup-server] => (item=445)
+2025-09-04 21:50:54,963 p=390678 u=simoda n=ansible | changed: [client-workstation] => (item=445)
+2025-09-04 21:50:55,369 p=390678 u=simoda n=ansible | changed: [backup-server] => (item=2049)
+2025-09-04 21:50:55,541 p=390678 u=simoda n=ansible | changed: [client-workstation] => (item=2049)
+2025-09-04 21:50:55,545 p=390678 u=simoda n=ansible | TASK [common : Enable firewall] ************************************************
+2025-09-04 21:50:56,279 p=390678 u=simoda n=ansible | ok: [client-workstation]
+2025-09-04 21:50:56,405 p=390678 u=simoda n=ansible | changed: [backup-server]
+2025-09-04 21:50:56,409 p=390678 u=simoda n=ansible | TASK [common : Configure NTP] **************************************************
+2025-09-04 21:50:57,033 p=390678 u=simoda n=ansible | ok: [backup-server]
+2025-09-04 21:50:57,043 p=390678 u=simoda n=ansible | ok: [client-workstation]
+2025-09-04 21:50:57,077 p=390678 u=simoda n=ansible | PLAY [Configure File Server] ***************************************************
+2025-09-04 21:50:57,082 p=390678 u=simoda n=ansible | PLAY [Configure Backup Server] *************************************************
+2025-09-04 21:50:57,088 p=390678 u=simoda n=ansible | TASK [Gathering Facts] *********************************************************
+2025-09-04 21:50:57,959 p=390678 u=simoda n=ansible | ok: [backup-server]
+2025-09-04 21:50:57,968 p=390678 u=simoda n=ansible | TASK [backup : Install backup tools] *******************************************
+2025-09-04 21:50:58,780 p=390678 u=simoda n=ansible | ok: [backup-server]
+2025-09-04 21:50:58,785 p=390678 u=simoda n=ansible | TASK [backup : Create backup directories] **************************************
+2025-09-04 21:50:59,099 p=390678 u=simoda n=ansible | changed: [backup-server] => (item=daily)
+2025-09-04 21:50:59,291 p=390678 u=simoda n=ansible | changed: [backup-server] => (item=weekly)
+2025-09-04 21:50:59,493 p=390678 u=simoda n=ansible | changed: [backup-server] => (item=monthly)
+2025-09-04 21:50:59,501 p=390678 u=simoda n=ansible | TASK [backup : Create backup script] *******************************************
+2025-09-04 21:50:59,580 p=390678 u=simoda n=ansible | An exception occurred during task execution. To see the full traceback, use -vvv. The error was: ansible.errors.AnsibleUndefinedVariable: 'file_server_ip' is undefined. 'file_server_ip' is undefined
+2025-09-04 21:50:59,580 p=390678 u=simoda n=ansible | fatal: [backup-server]: FAILED! => changed=false 
+  msg: 'AnsibleUndefinedVariable: ''file_server_ip'' is undefined. ''file_server_ip'' is undefined'
+2025-09-04 21:50:59,581 p=390678 u=simoda n=ansible | PLAY RECAP *********************************************************************
+2025-09-04 21:50:59,581 p=390678 u=simoda n=ansible | backup-server              : ok=9    changed=4    unreachable=0    failed=1    skipped=1    rescued=0    ignored=0   
+2025-09-04 21:50:59,581 p=390678 u=simoda n=ansible | client-workstation         : ok=6    changed=2    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+2025-09-04 21:50:59,581 p=390678 u=simoda n=ansible | file-server                : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
+2025-09-04 21:53:03,814 p=392031 u=simoda n=ansible | PLAY [Ansible Ad-Hoc] **********************************************************
+2025-09-04 21:53:03,844 p=392031 u=simoda n=ansible | TASK [ping] ********************************************************************
+2025-09-04 21:53:04,607 p=392031 u=simoda n=ansible | ok: [file-server]
+2025-09-04 21:53:04,917 p=392031 u=simoda n=ansible | ok: [client-workstation]
+2025-09-04 21:53:04,917 p=392031 u=simoda n=ansible | ok: [backup-server]
+2025-09-04 21:53:04,924 p=392031 u=simoda n=ansible | PLAY RECAP *********************************************************************
+2025-09-04 21:53:04,925 p=392031 u=simoda n=ansible | backup-server              : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2025-09-04 21:53:04,925 p=392031 u=simoda n=ansible | client-workstation         : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2025-09-04 21:53:04,925 p=392031 u=simoda n=ansible | file-server                : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2025-09-04 21:53:11,712 p=392124 u=simoda n=ansible | PLAY [Deploy Enterprise File Server Platform] **********************************
+2025-09-04 21:53:11,721 p=392124 u=simoda n=ansible | TASK [Gathering Facts] *********************************************************
+2025-09-04 21:53:12,172 p=392124 u=simoda n=ansible | fatal: [file-server]: FAILED! => 
+  msg: Missing sudo password
+2025-09-04 21:53:12,977 p=392124 u=simoda n=ansible | ok: [backup-server]
+2025-09-04 21:53:13,021 p=392124 u=simoda n=ansible | ok: [client-workstation]
+2025-09-04 21:53:13,037 p=392124 u=simoda n=ansible | TASK [common : Update package cache (Ubuntu)] **********************************
+2025-09-04 21:53:13,795 p=392124 u=simoda n=ansible | ok: [backup-server]
+2025-09-04 21:53:13,800 p=392124 u=simoda n=ansible | ok: [client-workstation]
+2025-09-04 21:53:13,804 p=392124 u=simoda n=ansible | TASK [common : Install base packages (Ubuntu)] *********************************
+2025-09-04 21:53:14,668 p=392124 u=simoda n=ansible | ok: [backup-server]
+2025-09-04 21:53:14,675 p=392124 u=simoda n=ansible | ok: [client-workstation]
+2025-09-04 21:53:14,679 p=392124 u=simoda n=ansible | TASK [common : Install base packages (RHEL)] ***********************************
+2025-09-04 21:53:14,693 p=392124 u=simoda n=ansible | skipping: [backup-server]
+2025-09-04 21:53:14,698 p=392124 u=simoda n=ansible | skipping: [client-workstation]
+2025-09-04 21:53:14,702 p=392124 u=simoda n=ansible | TASK [common : Configure firewall] *********************************************
+2025-09-04 21:53:15,396 p=392124 u=simoda n=ansible | ok: [client-workstation] => (item=22)
+2025-09-04 21:53:15,417 p=392124 u=simoda n=ansible | ok: [backup-server] => (item=22)
+2025-09-04 21:53:15,914 p=392124 u=simoda n=ansible | ok: [client-workstation] => (item=445)
+2025-09-04 21:53:15,938 p=392124 u=simoda n=ansible | ok: [backup-server] => (item=445)
+2025-09-04 21:53:16,447 p=392124 u=simoda n=ansible | ok: [client-workstation] => (item=2049)
+2025-09-04 21:53:16,449 p=392124 u=simoda n=ansible | ok: [backup-server] => (item=2049)
+2025-09-04 21:53:16,454 p=392124 u=simoda n=ansible | TASK [common : Enable firewall] ************************************************
+2025-09-04 21:53:17,199 p=392124 u=simoda n=ansible | ok: [backup-server]
+2025-09-04 21:53:18,188 p=392124 u=simoda n=ansible | ok: [client-workstation]
+2025-09-04 21:53:18,192 p=392124 u=simoda n=ansible | TASK [common : Configure NTP] **************************************************
+2025-09-04 21:53:18,755 p=392124 u=simoda n=ansible | ok: [client-workstation]
+2025-09-04 21:53:18,758 p=392124 u=simoda n=ansible | ok: [backup-server]
+2025-09-04 21:53:18,789 p=392124 u=simoda n=ansible | PLAY [Configure File Server] ***************************************************
+2025-09-04 21:53:18,794 p=392124 u=simoda n=ansible | PLAY [Configure Backup Server] *************************************************
+2025-09-04 21:53:18,800 p=392124 u=simoda n=ansible | TASK [Gathering Facts] *********************************************************
+2025-09-04 21:53:19,646 p=392124 u=simoda n=ansible | ok: [backup-server]
+2025-09-04 21:53:19,656 p=392124 u=simoda n=ansible | TASK [backup : Install backup tools] *******************************************
+2025-09-04 21:53:20,478 p=392124 u=simoda n=ansible | ok: [backup-server]
+2025-09-04 21:53:20,482 p=392124 u=simoda n=ansible | TASK [backup : Create backup directories] **************************************
+2025-09-04 21:53:20,770 p=392124 u=simoda n=ansible | ok: [backup-server] => (item=daily)
+2025-09-04 21:53:20,958 p=392124 u=simoda n=ansible | ok: [backup-server] => (item=weekly)
+2025-09-04 21:53:21,142 p=392124 u=simoda n=ansible | ok: [backup-server] => (item=monthly)
+2025-09-04 21:53:21,147 p=392124 u=simoda n=ansible | TASK [backup : Create backup script] *******************************************
+2025-09-04 21:53:21,832 p=392124 u=simoda n=ansible | changed: [backup-server]
+2025-09-04 21:53:21,839 p=392124 u=simoda n=ansible | TASK [backup : Schedule backup job] ********************************************
+2025-09-04 21:53:22,117 p=392124 u=simoda n=ansible | changed: [backup-server]
+2025-09-04 21:53:22,122 p=392124 u=simoda n=ansible | TASK [backup : Create backup cleanup script] ***********************************
+2025-09-04 21:53:22,589 p=392124 u=simoda n=ansible | changed: [backup-server]
+2025-09-04 21:53:22,594 p=392124 u=simoda n=ansible | TASK [backup : Schedule cleanup job] *******************************************
+2025-09-04 21:53:22,813 p=392124 u=simoda n=ansible | changed: [backup-server]
+2025-09-04 21:53:22,820 p=392124 u=simoda n=ansible | TASK [monitoring : Install monitoring tools] ***********************************
+2025-09-04 21:53:30,806 p=392124 u=simoda n=ansible | changed: [backup-server]
+2025-09-04 21:53:30,811 p=392124 u=simoda n=ansible | TASK [monitoring : Enable quota on filesystem] *********************************
+2025-09-04 21:53:31,194 p=392124 u=simoda n=ansible | changed: [backup-server]
+2025-09-04 21:53:31,199 p=392124 u=simoda n=ansible | TASK [monitoring : Initialize quota database] **********************************
+2025-09-04 21:53:31,481 p=392124 u=simoda n=ansible | fatal: [backup-server]: FAILED! => changed=false 
+  cmd:
+  - quotacheck
+  - -cug
+  - /
+  delta: '0:00:00.006773'
+  end: '2025-09-04 11:53:31.366569'
+  failed_when_result: true
+  msg: non-zero return code
+  rc: 1
+  start: '2025-09-04 11:53:31.359796'
+  stderr: |-
+    quotacheck: Cannot remount filesystem mounted on / read-only so counted values might not be right.
+    Please stop all programs writing to filesystem or use -m flag to force checking.
+  stderr_lines: <omitted>
+  stdout: ''
+  stdout_lines: <omitted>
+2025-09-04 21:53:31,482 p=392124 u=simoda n=ansible | PLAY RECAP *********************************************************************
+2025-09-04 21:53:31,482 p=392124 u=simoda n=ansible | backup-server              : ok=15   changed=6    unreachable=0    failed=1    skipped=1    rescued=0    ignored=0   
+2025-09-04 21:53:31,482 p=392124 u=simoda n=ansible | client-workstation         : ok=6    changed=0    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+2025-09-04 21:53:31,482 p=392124 u=simoda n=ansible | file-server                : ok=0    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2025-09-04 21:58:46,736 p=394946 u=simoda n=ansible | PLAY [Deploy Enterprise File Server Platform] **********************************
+2025-09-04 21:58:46,743 p=394946 u=simoda n=ansible | TASK [Gathering Facts] *********************************************************
+2025-09-04 21:58:48,249 p=394946 u=simoda n=ansible | ok: [file-server]
+2025-09-04 21:58:48,594 p=394946 u=simoda n=ansible | ok: [backup-server]
+2025-09-04 21:58:48,607 p=394946 u=simoda n=ansible | ok: [client-workstation]
+2025-09-04 21:58:48,630 p=394946 u=simoda n=ansible | TASK [common : Update package cache (Ubuntu)] **********************************
+2025-09-04 21:58:48,657 p=394946 u=simoda n=ansible | skipping: [file-server]
+2025-09-04 21:58:49,349 p=394946 u=simoda n=ansible | ok: [client-workstation]
+2025-09-04 21:58:49,360 p=394946 u=simoda n=ansible | ok: [backup-server]
+2025-09-04 21:58:49,365 p=394946 u=simoda n=ansible | TASK [common : Install base packages (Ubuntu)] *********************************
+2025-09-04 21:58:49,387 p=394946 u=simoda n=ansible | skipping: [file-server]
+2025-09-04 21:58:50,213 p=394946 u=simoda n=ansible | ok: [backup-server]
+2025-09-04 21:58:50,215 p=394946 u=simoda n=ansible | ok: [client-workstation]
+2025-09-04 21:58:50,220 p=394946 u=simoda n=ansible | TASK [common : Install base packages (RHEL)] ***********************************
+2025-09-04 21:58:50,241 p=394946 u=simoda n=ansible | skipping: [backup-server]
+2025-09-04 21:58:50,247 p=394946 u=simoda n=ansible | skipping: [client-workstation]
+2025-09-04 21:58:56,089 p=394946 u=simoda n=ansible | fatal: [file-server]: FAILED! => changed=false 
+  failures:
+  - No package htop available.
+  msg: Failed to install some of the specified packages
+  rc: 1
+  results: []
+2025-09-04 21:58:56,093 p=394946 u=simoda n=ansible | TASK [common : Configure firewall] *********************************************
+2025-09-04 21:58:56,804 p=394946 u=simoda n=ansible | ok: [client-workstation] => (item=22)
+2025-09-04 21:58:56,823 p=394946 u=simoda n=ansible | ok: [backup-server] => (item=22)
+2025-09-04 21:58:57,335 p=394946 u=simoda n=ansible | ok: [client-workstation] => (item=445)
+2025-09-04 21:58:57,846 p=394946 u=simoda n=ansible | ok: [client-workstation] => (item=2049)
+2025-09-04 21:58:58,395 p=394946 u=simoda n=ansible | ok: [backup-server] => (item=445)
+2025-09-04 21:58:58,912 p=394946 u=simoda n=ansible | ok: [backup-server] => (item=2049)
+2025-09-04 21:58:58,917 p=394946 u=simoda n=ansible | TASK [common : Enable firewall] ************************************************
+2025-09-04 21:58:59,687 p=394946 u=simoda n=ansible | ok: [backup-server]
+2025-09-04 21:58:59,689 p=394946 u=simoda n=ansible | ok: [client-workstation]
+2025-09-04 21:58:59,694 p=394946 u=simoda n=ansible | TASK [common : Configure NTP] **************************************************
+2025-09-04 21:59:00,338 p=394946 u=simoda n=ansible | ok: [backup-server]
+2025-09-04 21:59:00,342 p=394946 u=simoda n=ansible | ok: [client-workstation]
+2025-09-04 21:59:00,374 p=394946 u=simoda n=ansible | PLAY [Configure File Server] ***************************************************
+2025-09-04 21:59:00,380 p=394946 u=simoda n=ansible | PLAY [Configure Backup Server] *************************************************
+2025-09-04 21:59:00,386 p=394946 u=simoda n=ansible | TASK [Gathering Facts] *********************************************************
+2025-09-04 21:59:01,263 p=394946 u=simoda n=ansible | ok: [backup-server]
+2025-09-04 21:59:01,273 p=394946 u=simoda n=ansible | TASK [backup : Install backup tools] *******************************************
+2025-09-04 21:59:02,089 p=394946 u=simoda n=ansible | ok: [backup-server]
+2025-09-04 21:59:02,093 p=394946 u=simoda n=ansible | TASK [backup : Create backup directories] **************************************
+2025-09-04 21:59:02,397 p=394946 u=simoda n=ansible | ok: [backup-server] => (item=daily)
+2025-09-04 21:59:02,584 p=394946 u=simoda n=ansible | ok: [backup-server] => (item=weekly)
+2025-09-04 21:59:02,776 p=394946 u=simoda n=ansible | ok: [backup-server] => (item=monthly)
+2025-09-04 21:59:02,782 p=394946 u=simoda n=ansible | TASK [backup : Create backup script] *******************************************
+2025-09-04 21:59:03,323 p=394946 u=simoda n=ansible | ok: [backup-server]
+2025-09-04 21:59:03,328 p=394946 u=simoda n=ansible | TASK [backup : Schedule backup job] ********************************************
+2025-09-04 21:59:03,600 p=394946 u=simoda n=ansible | ok: [backup-server]
+2025-09-04 21:59:03,605 p=394946 u=simoda n=ansible | TASK [backup : Create backup cleanup script] ***********************************
+2025-09-04 21:59:04,068 p=394946 u=simoda n=ansible | ok: [backup-server]
+2025-09-04 21:59:04,072 p=394946 u=simoda n=ansible | TASK [backup : Schedule cleanup job] *******************************************
+2025-09-04 21:59:04,269 p=394946 u=simoda n=ansible | ok: [backup-server]
+2025-09-04 21:59:04,276 p=394946 u=simoda n=ansible | TASK [monitoring : Install monitoring tools] ***********************************
+2025-09-04 21:59:05,066 p=394946 u=simoda n=ansible | ok: [backup-server]
+2025-09-04 21:59:05,072 p=394946 u=simoda n=ansible | TASK [monitoring : Enable quota on filesystem] *********************************
+2025-09-04 21:59:05,429 p=394946 u=simoda n=ansible | ok: [backup-server]
+2025-09-04 21:59:05,433 p=394946 u=simoda n=ansible | TASK [monitoring : Initialize quota database] **********************************
+2025-09-04 21:59:05,746 p=394946 u=simoda n=ansible | ok: [backup-server]
+2025-09-04 21:59:05,751 p=394946 u=simoda n=ansible | TASK [monitoring : Enable quota] ***********************************************
+2025-09-04 21:59:05,955 p=394946 u=simoda n=ansible | fatal: [backup-server]: FAILED! => changed=false 
+  cmd:
+  - quotaon
+  - /
+  delta: '0:00:00.004399'
+  end: '2025-09-04 11:59:05.770892'
+  failed_when_result: true
+  msg: non-zero return code
+  rc: 2
+  start: '2025-09-04 11:59:05.766493'
+  stderr: |-
+    quotaon: cannot find //aquota.group on /dev/mapper/ubuntu--vg-ubuntu--lv [/]
+    quotaon: cannot find //aquota.user on /dev/mapper/ubuntu--vg-ubuntu--lv [/]
+  stderr_lines: <omitted>
+  stdout: ''
+  stdout_lines: <omitted>
+2025-09-04 21:59:05,956 p=394946 u=simoda n=ansible | PLAY RECAP *********************************************************************
+2025-09-04 21:59:05,956 p=394946 u=simoda n=ansible | backup-server              : ok=16   changed=0    unreachable=0    failed=1    skipped=1    rescued=0    ignored=0   
+2025-09-04 21:59:05,956 p=394946 u=simoda n=ansible | client-workstation         : ok=6    changed=0    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+2025-09-04 21:59:05,956 p=394946 u=simoda n=ansible | file-server                : ok=1    changed=0    unreachable=0    failed=1    skipped=2    rescued=0    ignored=0   
+2025-09-04 21:59:53,045 p=395622 u=simoda n=ansible | PLAY [Deploy Enterprise File Server Platform] **********************************
+2025-09-04 21:59:53,053 p=395622 u=simoda n=ansible | TASK [Gathering Facts] *********************************************************
+2025-09-04 21:59:54,261 p=395622 u=simoda n=ansible | ok: [backup-server]
+2025-09-04 21:59:54,266 p=395622 u=simoda n=ansible | ok: [file-server]
+2025-09-04 21:59:54,279 p=395622 u=simoda n=ansible | ok: [client-workstation]
+2025-09-04 21:59:54,299 p=395622 u=simoda n=ansible | TASK [common : Update package cache (Ubuntu)] **********************************
+2025-09-04 21:59:54,324 p=395622 u=simoda n=ansible | skipping: [file-server]
+2025-09-04 21:59:55,101 p=395622 u=simoda n=ansible | ok: [client-workstation]
+2025-09-04 21:59:55,111 p=395622 u=simoda n=ansible | ok: [backup-server]
+2025-09-04 21:59:55,116 p=395622 u=simoda n=ansible | TASK [common : Install base packages (Ubuntu)] *********************************
+2025-09-04 21:59:55,141 p=395622 u=simoda n=ansible | skipping: [file-server]
+2025-09-04 21:59:56,064 p=395622 u=simoda n=ansible | ok: [client-workstation]
+2025-09-04 21:59:56,071 p=395622 u=simoda n=ansible | ok: [backup-server]
+2025-09-04 21:59:56,076 p=395622 u=simoda n=ansible | TASK [common : Enable EPEL repository (RHEL)] **********************************
+2025-09-04 21:59:56,098 p=395622 u=simoda n=ansible | skipping: [backup-server]
+2025-09-04 21:59:56,104 p=395622 u=simoda n=ansible | skipping: [client-workstation]
+2025-09-04 21:59:59,113 p=395622 u=simoda n=ansible | fatal: [file-server]: FAILED! => changed=false 
+  failures:
+  - No package epel-release available.
+  msg: Failed to install some of the specified packages
+  rc: 1
+  results: []
+2025-09-04 21:59:59,118 p=395622 u=simoda n=ansible | TASK [common : Install base packages (RHEL)] ***********************************
+2025-09-04 21:59:59,132 p=395622 u=simoda n=ansible | skipping: [backup-server]
+2025-09-04 21:59:59,141 p=395622 u=simoda n=ansible | skipping: [client-workstation]
+2025-09-04 21:59:59,146 p=395622 u=simoda n=ansible | TASK [common : Configure firewall] *********************************************
+2025-09-04 21:59:59,838 p=395622 u=simoda n=ansible | ok: [client-workstation] => (item=22)
+2025-09-04 21:59:59,852 p=395622 u=simoda n=ansible | ok: [backup-server] => (item=22)
+2025-09-04 22:00:00,369 p=395622 u=simoda n=ansible | ok: [client-workstation] => (item=445)
+2025-09-04 22:00:00,389 p=395622 u=simoda n=ansible | ok: [backup-server] => (item=445)
+2025-09-04 22:00:00,892 p=395622 u=simoda n=ansible | ok: [client-workstation] => (item=2049)
+2025-09-04 22:00:00,918 p=395622 u=simoda n=ansible | ok: [backup-server] => (item=2049)
+2025-09-04 22:00:00,923 p=395622 u=simoda n=ansible | TASK [common : Enable firewall] ************************************************
+2025-09-04 22:00:01,680 p=395622 u=simoda n=ansible | ok: [client-workstation]
+2025-09-04 22:00:01,718 p=395622 u=simoda n=ansible | ok: [backup-server]
+2025-09-04 22:00:01,724 p=395622 u=simoda n=ansible | TASK [common : Configure NTP] **************************************************
+2025-09-04 22:00:02,390 p=395622 u=simoda n=ansible | ok: [backup-server]
+2025-09-04 22:00:02,401 p=395622 u=simoda n=ansible | ok: [client-workstation]
+2025-09-04 22:00:02,434 p=395622 u=simoda n=ansible | PLAY [Configure File Server] ***************************************************
+2025-09-04 22:00:02,439 p=395622 u=simoda n=ansible | PLAY [Configure Backup Server] *************************************************
+2025-09-04 22:00:02,445 p=395622 u=simoda n=ansible | TASK [Gathering Facts] *********************************************************
+2025-09-04 22:00:03,299 p=395622 u=simoda n=ansible | ok: [backup-server]
+2025-09-04 22:00:03,308 p=395622 u=simoda n=ansible | TASK [backup : Install backup tools] *******************************************
+2025-09-04 22:00:04,093 p=395622 u=simoda n=ansible | ok: [backup-server]
+2025-09-04 22:00:04,098 p=395622 u=simoda n=ansible | TASK [backup : Create backup directories] **************************************
+2025-09-04 22:00:04,409 p=395622 u=simoda n=ansible | ok: [backup-server] => (item=daily)
+2025-09-04 22:00:04,594 p=395622 u=simoda n=ansible | ok: [backup-server] => (item=weekly)
+2025-09-04 22:00:04,778 p=395622 u=simoda n=ansible | ok: [backup-server] => (item=monthly)
+2025-09-04 22:00:04,784 p=395622 u=simoda n=ansible | TASK [backup : Create backup script] *******************************************
+2025-09-04 22:00:05,299 p=395622 u=simoda n=ansible | ok: [backup-server]
+2025-09-04 22:00:05,304 p=395622 u=simoda n=ansible | TASK [backup : Schedule backup job] ********************************************
+2025-09-04 22:00:05,580 p=395622 u=simoda n=ansible | ok: [backup-server]
+2025-09-04 22:00:05,585 p=395622 u=simoda n=ansible | TASK [backup : Create backup cleanup script] ***********************************
+2025-09-04 22:00:06,040 p=395622 u=simoda n=ansible | ok: [backup-server]
+2025-09-04 22:00:06,045 p=395622 u=simoda n=ansible | TASK [backup : Schedule cleanup job] *******************************************
+2025-09-04 22:00:06,252 p=395622 u=simoda n=ansible | ok: [backup-server]
+2025-09-04 22:00:06,261 p=395622 u=simoda n=ansible | TASK [monitoring : Install monitoring tools] ***********************************
+2025-09-04 22:00:07,061 p=395622 u=simoda n=ansible | ok: [backup-server]
+2025-09-04 22:00:07,065 p=395622 u=simoda n=ansible | TASK [monitoring : Enable quota on filesystem] *********************************
+2025-09-04 22:00:07,423 p=395622 u=simoda n=ansible | ok: [backup-server]
+2025-09-04 22:00:07,428 p=395622 u=simoda n=ansible | TASK [monitoring : Initialize quota database] **********************************
+2025-09-04 22:00:07,738 p=395622 u=simoda n=ansible | ok: [backup-server]
+2025-09-04 22:00:07,743 p=395622 u=simoda n=ansible | TASK [monitoring : Enable quota] ***********************************************
+2025-09-04 22:00:07,942 p=395622 u=simoda n=ansible | ok: [backup-server]
+2025-09-04 22:00:07,946 p=395622 u=simoda n=ansible | TASK [monitoring : Create monitoring script] ***********************************
+2025-09-04 22:00:08,529 p=395622 u=simoda n=ansible | changed: [backup-server]
+2025-09-04 22:00:08,534 p=395622 u=simoda n=ansible | TASK [monitoring : Schedule monitoring] ****************************************
+2025-09-04 22:00:08,748 p=395622 u=simoda n=ansible | changed: [backup-server]
+2025-09-04 22:00:08,765 p=395622 u=simoda n=ansible | PLAY [Configure Client Workstation] ********************************************
+2025-09-04 22:00:08,773 p=395622 u=simoda n=ansible | TASK [Gathering Facts] *********************************************************
+2025-09-04 22:00:09,700 p=395622 u=simoda n=ansible | ok: [client-workstation]
+2025-09-04 22:00:09,710 p=395622 u=simoda n=ansible | TASK [autofs : Install autofs] *************************************************
+2025-09-04 22:00:22,391 p=395622 u=simoda n=ansible | changed: [client-workstation]
+2025-09-04 22:00:22,395 p=395622 u=simoda n=ansible | TASK [autofs : Configure autofs master] ****************************************
+2025-09-04 22:00:22,898 p=395622 u=simoda n=ansible | changed: [client-workstation]
+2025-09-04 22:00:22,907 p=395622 u=simoda n=ansible | TASK [autofs : Configure autofs maps] ******************************************
+2025-09-04 22:00:23,391 p=395622 u=simoda n=ansible | changed: [client-workstation]
+2025-09-04 22:00:23,396 p=395622 u=simoda n=ansible | TASK [autofs : Create mount points] ********************************************
+2025-09-04 22:00:23,591 p=395622 u=simoda n=ansible | changed: [client-workstation]
+2025-09-04 22:00:23,596 p=395622 u=simoda n=ansible | TASK [autofs : Start and enable autofs] ****************************************
+2025-09-04 22:00:23,949 p=395622 u=simoda n=ansible | ok: [client-workstation]
+2025-09-04 22:00:23,965 p=395622 u=simoda n=ansible | RUNNING HANDLER [autofs : restart autofs] **************************************
+2025-09-04 22:00:24,358 p=395622 u=simoda n=ansible | changed: [client-workstation]
+2025-09-04 22:00:24,366 p=395622 u=simoda n=ansible | PLAY RECAP *********************************************************************
+2025-09-04 22:00:24,366 p=395622 u=simoda n=ansible | backup-server              : ok=19   changed=2    unreachable=0    failed=0    skipped=2    rescued=0    ignored=0   
+2025-09-04 22:00:24,366 p=395622 u=simoda n=ansible | client-workstation         : ok=13   changed=5    unreachable=0    failed=0    skipped=2    rescued=0    ignored=0   
+2025-09-04 22:00:24,366 p=395622 u=simoda n=ansible | file-server                : ok=1    changed=0    unreachable=0    failed=1    skipped=2    rescued=0    ignored=0   
+2025-09-05 10:09:38,867 p=41992 u=simoda n=ansible | PLAY [Ansible Ad-Hoc] ***************************************************************************************************************
+2025-09-05 10:09:38,958 p=41992 u=simoda n=ansible | TASK [ping] *************************************************************************************************************************
+2025-09-05 10:09:39,750 p=41992 u=simoda n=ansible | ok: [file-server]
+2025-09-05 10:09:41,117 p=41992 u=simoda n=ansible | ok: [client-workstation]
+2025-09-05 10:09:41,135 p=41992 u=simoda n=ansible | ok: [backup-server]
+2025-09-05 10:09:41,142 p=41992 u=simoda n=ansible | PLAY RECAP **************************************************************************************************************************
+2025-09-05 10:09:41,142 p=41992 u=simoda n=ansible | backup-server              : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2025-09-05 10:09:41,143 p=41992 u=simoda n=ansible | client-workstation         : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2025-09-05 10:09:41,143 p=41992 u=simoda n=ansible | file-server                : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2025-09-05 10:18:46,447 p=48217 u=simoda n=ansible | PLAY [Deploy Enterprise File Server Platform] ***************************************************************************************
+2025-09-05 10:18:46,455 p=48217 u=simoda n=ansible | TASK [Gathering Facts] **************************************************************************************************************
+2025-09-05 10:18:48,109 p=48217 u=simoda n=ansible | ok: [file-server]
+2025-09-05 10:18:48,633 p=48217 u=simoda n=ansible | ok: [backup-server]
+2025-09-05 10:18:49,176 p=48217 u=simoda n=ansible | ok: [client-workstation]
+2025-09-05 10:18:49,197 p=48217 u=simoda n=ansible | TASK [common : Update package cache (Ubuntu)] ***************************************************************************************
+2025-09-05 10:18:49,221 p=48217 u=simoda n=ansible | skipping: [file-server]
+2025-09-05 10:19:06,351 p=48217 u=simoda n=ansible | changed: [backup-server]
+2025-09-05 10:19:06,521 p=48217 u=simoda n=ansible | changed: [client-workstation]
+2025-09-05 10:19:06,527 p=48217 u=simoda n=ansible | TASK [common : Install base packages (Ubuntu)] **************************************************************************************
+2025-09-05 10:19:06,550 p=48217 u=simoda n=ansible | skipping: [file-server]
+2025-09-05 10:19:07,403 p=48217 u=simoda n=ansible | ok: [backup-server]
+2025-09-05 10:19:07,530 p=48217 u=simoda n=ansible | ok: [client-workstation]
+2025-09-05 10:19:07,535 p=48217 u=simoda n=ansible | TASK [common : Enable CRB repository (RHEL)] ****************************************************************************************
+2025-09-05 10:19:07,556 p=48217 u=simoda n=ansible | skipping: [backup-server]
+2025-09-05 10:19:07,562 p=48217 u=simoda n=ansible | skipping: [client-workstation]
+2025-09-05 10:19:10,097 p=48217 u=simoda n=ansible | fatal: [file-server]: FAILED! => changed=true 
+  cmd:
+  - dnf
+  - config-manager
+  - --set-enabled
+  - crb
+  delta: '0:00:02.235568'
+  end: '2025-09-05 10:19:10.130260'
+  msg: non-zero return code
+  rc: 1
+  start: '2025-09-05 10:19:07.894692'
+  stderr: 'Error: No matching repo to modify: crb.'
+  stderr_lines: <omitted>
+  stdout: Updating Subscription Management repositories.
+  stdout_lines: <omitted>
+2025-09-05 10:19:10,097 p=48217 u=simoda n=ansible | ...ignoring
+2025-09-05 10:19:10,103 p=48217 u=simoda n=ansible | TASK [common : Enable EPEL repository (RHEL)] ***************************************************************************************
+2025-09-05 10:19:10,125 p=48217 u=simoda n=ansible | skipping: [backup-server]
+2025-09-05 10:19:10,131 p=48217 u=simoda n=ansible | skipping: [client-workstation]
+2025-09-05 10:19:16,178 p=48217 u=simoda n=ansible | ok: [file-server]
+2025-09-05 10:19:16,183 p=48217 u=simoda n=ansible | TASK [common : Install base packages (RHEL)] ****************************************************************************************
+2025-09-05 10:19:16,207 p=48217 u=simoda n=ansible | skipping: [backup-server]
+2025-09-05 10:19:16,215 p=48217 u=simoda n=ansible | skipping: [client-workstation]
+2025-09-05 10:19:22,072 p=48217 u=simoda n=ansible | changed: [file-server]
+2025-09-05 10:19:22,078 p=48217 u=simoda n=ansible | TASK [common : Configure firewall] **************************************************************************************************
+2025-09-05 10:19:22,404 p=48217 u=simoda n=ansible | failed: [file-server] (item=22) => changed=false 
+  ansible_loop_var: item
+  item: '22'
+  msg: 'Failed to find required executable "ufw" in paths: /sbin:/bin:/usr/sbin:/usr/bin:/usr/local/sbin'
+2025-09-05 10:19:22,619 p=48217 u=simoda n=ansible | failed: [file-server] (item=445) => changed=false 
+  ansible_loop_var: item
+  item: '445'
+  msg: 'Failed to find required executable "ufw" in paths: /sbin:/bin:/usr/sbin:/usr/bin:/usr/local/sbin'
+2025-09-05 10:19:22,804 p=48217 u=simoda n=ansible | ok: [client-workstation] => (item=22)
+2025-09-05 10:19:22,830 p=48217 u=simoda n=ansible | failed: [file-server] (item=2049) => changed=false 
+  ansible_loop_var: item
+  item: '2049'
+  msg: 'Failed to find required executable "ufw" in paths: /sbin:/bin:/usr/sbin:/usr/bin:/usr/local/sbin'
+2025-09-05 10:19:23,325 p=48217 u=simoda n=ansible | ok: [client-workstation] => (item=445)
+2025-09-05 10:19:23,831 p=48217 u=simoda n=ansible | ok: [backup-server] => (item=22)
+2025-09-05 10:19:23,876 p=48217 u=simoda n=ansible | ok: [client-workstation] => (item=2049)
+2025-09-05 10:19:25,334 p=48217 u=simoda n=ansible | ok: [backup-server] => (item=445)
+2025-09-05 10:19:25,837 p=48217 u=simoda n=ansible | ok: [backup-server] => (item=2049)
+2025-09-05 10:19:25,843 p=48217 u=simoda n=ansible | TASK [common : Enable firewall] *****************************************************************************************************
+2025-09-05 10:19:26,575 p=48217 u=simoda n=ansible | ok: [backup-server]
+2025-09-05 10:19:27,570 p=48217 u=simoda n=ansible | ok: [client-workstation]
+2025-09-05 10:19:27,575 p=48217 u=simoda n=ansible | TASK [common : Configure NTP] *******************************************************************************************************
+2025-09-05 10:19:28,175 p=48217 u=simoda n=ansible | ok: [backup-server]
+2025-09-05 10:19:28,181 p=48217 u=simoda n=ansible | ok: [client-workstation]
+2025-09-05 10:19:28,214 p=48217 u=simoda n=ansible | PLAY [Configure File Server] ********************************************************************************************************
+2025-09-05 10:19:28,220 p=48217 u=simoda n=ansible | PLAY [Configure Backup Server] ******************************************************************************************************
+2025-09-05 10:19:28,225 p=48217 u=simoda n=ansible | TASK [Gathering Facts] **************************************************************************************************************
+2025-09-05 10:19:29,072 p=48217 u=simoda n=ansible | ok: [backup-server]
+2025-09-05 10:19:29,082 p=48217 u=simoda n=ansible | TASK [backup : Install backup tools] ************************************************************************************************
+2025-09-05 10:19:29,866 p=48217 u=simoda n=ansible | ok: [backup-server]
+2025-09-05 10:19:29,872 p=48217 u=simoda n=ansible | TASK [backup : Create backup directories] *******************************************************************************************
+2025-09-05 10:19:30,206 p=48217 u=simoda n=ansible | ok: [backup-server] => (item=daily)
+2025-09-05 10:19:30,390 p=48217 u=simoda n=ansible | ok: [backup-server] => (item=weekly)
+2025-09-05 10:19:30,573 p=48217 u=simoda n=ansible | ok: [backup-server] => (item=monthly)
+2025-09-05 10:19:30,579 p=48217 u=simoda n=ansible | TASK [backup : Create backup script] ************************************************************************************************
+2025-09-05 10:19:31,147 p=48217 u=simoda n=ansible | ok: [backup-server]
+2025-09-05 10:19:31,152 p=48217 u=simoda n=ansible | TASK [backup : Schedule backup job] *************************************************************************************************
+2025-09-05 10:19:31,469 p=48217 u=simoda n=ansible | ok: [backup-server]
+2025-09-05 10:19:31,473 p=48217 u=simoda n=ansible | TASK [backup : Create backup cleanup script] ****************************************************************************************
+2025-09-05 10:19:31,908 p=48217 u=simoda n=ansible | ok: [backup-server]
+2025-09-05 10:19:31,912 p=48217 u=simoda n=ansible | TASK [backup : Schedule cleanup job] ************************************************************************************************
+2025-09-05 10:19:32,109 p=48217 u=simoda n=ansible | ok: [backup-server]
+2025-09-05 10:19:32,117 p=48217 u=simoda n=ansible | TASK [monitoring : Install monitoring tools] ****************************************************************************************
+2025-09-05 10:19:32,895 p=48217 u=simoda n=ansible | ok: [backup-server]
+2025-09-05 10:19:32,899 p=48217 u=simoda n=ansible | TASK [monitoring : Enable quota on filesystem] **************************************************************************************
+2025-09-05 10:19:33,262 p=48217 u=simoda n=ansible | ok: [backup-server]
+2025-09-05 10:19:33,267 p=48217 u=simoda n=ansible | TASK [monitoring : Initialize quota database] ***************************************************************************************
+2025-09-05 10:19:33,491 p=48217 u=simoda n=ansible | ok: [backup-server]
+2025-09-05 10:19:33,495 p=48217 u=simoda n=ansible | TASK [monitoring : Enable quota] ****************************************************************************************************
+2025-09-05 10:19:33,690 p=48217 u=simoda n=ansible | ok: [backup-server]
+2025-09-05 10:19:33,695 p=48217 u=simoda n=ansible | TASK [monitoring : Create monitoring script] ****************************************************************************************
+2025-09-05 10:19:34,128 p=48217 u=simoda n=ansible | ok: [backup-server]
+2025-09-05 10:19:34,132 p=48217 u=simoda n=ansible | TASK [monitoring : Schedule monitoring] *********************************************************************************************
+2025-09-05 10:19:34,352 p=48217 u=simoda n=ansible | ok: [backup-server]
+2025-09-05 10:19:34,402 p=48217 u=simoda n=ansible | PLAY [Configure Client Workstation] *************************************************************************************************
+2025-09-05 10:19:34,410 p=48217 u=simoda n=ansible | TASK [Gathering Facts] **************************************************************************************************************
+2025-09-05 10:19:35,398 p=48217 u=simoda n=ansible | ok: [client-workstation]
+2025-09-05 10:19:35,408 p=48217 u=simoda n=ansible | TASK [autofs : Install autofs] ******************************************************************************************************
+2025-09-05 10:19:36,219 p=48217 u=simoda n=ansible | ok: [client-workstation]
+2025-09-05 10:19:36,225 p=48217 u=simoda n=ansible | TASK [autofs : Configure autofs master] *********************************************************************************************
+2025-09-05 10:19:36,700 p=48217 u=simoda n=ansible | ok: [client-workstation]
+2025-09-05 10:19:36,705 p=48217 u=simoda n=ansible | TASK [autofs : Configure autofs maps] ***********************************************************************************************
+2025-09-05 10:19:37,154 p=48217 u=simoda n=ansible | ok: [client-workstation]
+2025-09-05 10:19:37,159 p=48217 u=simoda n=ansible | TASK [autofs : Create mount points] *************************************************************************************************
+2025-09-05 10:19:37,355 p=48217 u=simoda n=ansible | ok: [client-workstation]
+2025-09-05 10:19:37,360 p=48217 u=simoda n=ansible | TASK [autofs : Start and enable autofs] *********************************************************************************************
+2025-09-05 10:19:37,712 p=48217 u=simoda n=ansible | ok: [client-workstation]
+2025-09-05 10:19:37,729 p=48217 u=simoda n=ansible | PLAY RECAP **************************************************************************************************************************
+2025-09-05 10:19:37,729 p=48217 u=simoda n=ansible | backup-server              : ok=19   changed=1    unreachable=0    failed=0    skipped=3    rescued=0    ignored=0   
+2025-09-05 10:19:37,730 p=48217 u=simoda n=ansible | client-workstation         : ok=12   changed=1    unreachable=0    failed=0    skipped=3    rescued=0    ignored=0   
+2025-09-05 10:19:37,730 p=48217 u=simoda n=ansible | file-server                : ok=4    changed=2    unreachable=0    failed=1    skipped=2    rescued=0    ignored=1   
+2025-09-05 11:23:13,405 p=92689 u=simoda n=ansible | PLAY [Deploy Enterprise File Server Platform] ***************************************************************************************
+2025-09-05 11:23:13,415 p=92689 u=simoda n=ansible | TASK [Gathering Facts] **************************************************************************************************************
+2025-09-05 11:23:14,852 p=92689 u=simoda n=ansible | ok: [file-server]
+2025-09-05 11:23:16,090 p=92689 u=simoda n=ansible | ok: [client-workstation]
+2025-09-05 11:23:16,285 p=92689 u=simoda n=ansible | ok: [backup-server]
+2025-09-05 11:23:16,310 p=92689 u=simoda n=ansible | TASK [common : Update package cache (Ubuntu)] ***************************************************************************************
+2025-09-05 11:23:16,336 p=92689 u=simoda n=ansible | skipping: [file-server]
+2025-09-05 11:23:17,031 p=92689 u=simoda n=ansible | ok: [client-workstation]
+2025-09-05 11:24:32,007 p=92689 u=simoda n=ansible | changed: [backup-server]
+2025-09-05 11:24:32,012 p=92689 u=simoda n=ansible | TASK [common : Install base packages (Ubuntu)] **************************************************************************************
+2025-09-05 11:24:32,034 p=92689 u=simoda n=ansible | skipping: [file-server]
+2025-09-05 11:24:32,822 p=92689 u=simoda n=ansible | ok: [backup-server]
+2025-09-05 11:24:33,689 p=92689 u=simoda n=ansible | ok: [client-workstation]
+2025-09-05 11:24:33,694 p=92689 u=simoda n=ansible | TASK [common : Enable CRB repository (RHEL)] ****************************************************************************************
+2025-09-05 11:24:33,716 p=92689 u=simoda n=ansible | skipping: [backup-server]
+2025-09-05 11:24:33,722 p=92689 u=simoda n=ansible | skipping: [client-workstation]
+2025-09-05 11:24:36,966 p=92689 u=simoda n=ansible | fatal: [file-server]: FAILED! => changed=true 
+  cmd:
+  - dnf
+  - config-manager
+  - --set-enabled
+  - crb
+  delta: '0:00:02.764295'
+  end: '2025-09-05 11:24:37.105368'
+  msg: non-zero return code
+  rc: 1
+  start: '2025-09-05 11:24:34.341073'
+  stderr: 'Error: No matching repo to modify: crb.'
+  stderr_lines: <omitted>
+  stdout: Updating Subscription Management repositories.
+  stdout_lines: <omitted>
+2025-09-05 11:24:36,966 p=92689 u=simoda n=ansible | ...ignoring
+2025-09-05 11:24:36,971 p=92689 u=simoda n=ansible | TASK [common : Enable EPEL repository (RHEL)] ***************************************************************************************
+2025-09-05 11:24:36,993 p=92689 u=simoda n=ansible | skipping: [backup-server]
+2025-09-05 11:24:36,998 p=92689 u=simoda n=ansible | skipping: [client-workstation]
+2025-09-05 11:24:42,727 p=92689 u=simoda n=ansible | ok: [file-server]
+2025-09-05 11:24:42,731 p=92689 u=simoda n=ansible | TASK [common : Install base packages (RHEL)] ****************************************************************************************
+2025-09-05 11:24:42,753 p=92689 u=simoda n=ansible | skipping: [backup-server]
+2025-09-05 11:24:42,760 p=92689 u=simoda n=ansible | skipping: [client-workstation]
+2025-09-05 11:24:45,584 p=92689 u=simoda n=ansible | ok: [file-server]
+2025-09-05 11:24:45,591 p=92689 u=simoda n=ansible | TASK [common : Configure firewall (Ubuntu)] *****************************************************************************************
+2025-09-05 11:24:45,607 p=92689 u=simoda n=ansible | skipping: [file-server] => (item=22) 
+2025-09-05 11:24:45,608 p=92689 u=simoda n=ansible | skipping: [file-server] => (item=445) 
+2025-09-05 11:24:45,613 p=92689 u=simoda n=ansible | skipping: [file-server] => (item=2049) 
+2025-09-05 11:24:45,619 p=92689 u=simoda n=ansible | skipping: [file-server]
+2025-09-05 11:24:46,244 p=92689 u=simoda n=ansible | ok: [client-workstation] => (item=22)
+2025-09-05 11:24:46,245 p=92689 u=simoda n=ansible | ok: [backup-server] => (item=22)
+2025-09-05 11:24:46,774 p=92689 u=simoda n=ansible | ok: [backup-server] => (item=445)
+2025-09-05 11:24:46,775 p=92689 u=simoda n=ansible | ok: [client-workstation] => (item=445)
+2025-09-05 11:24:47,282 p=92689 u=simoda n=ansible | ok: [backup-server] => (item=2049)
+2025-09-05 11:24:47,300 p=92689 u=simoda n=ansible | ok: [client-workstation] => (item=2049)
+2025-09-05 11:24:47,306 p=92689 u=simoda n=ansible | TASK [common : Enable firewall (Ubuntu)] ********************************************************************************************
+2025-09-05 11:24:47,327 p=92689 u=simoda n=ansible | skipping: [file-server]
+2025-09-05 11:24:48,044 p=92689 u=simoda n=ansible | ok: [client-workstation]
+2025-09-05 11:24:48,051 p=92689 u=simoda n=ansible | ok: [backup-server]
+2025-09-05 11:24:48,055 p=92689 u=simoda n=ansible | TASK [common : Configure firewall (RHEL)] *******************************************************************************************
+2025-09-05 11:24:48,079 p=92689 u=simoda n=ansible | skipping: [backup-server] => (item=22) 
+2025-09-05 11:24:48,084 p=92689 u=simoda n=ansible | skipping: [backup-server] => (item=445) 
+2025-09-05 11:24:48,085 p=92689 u=simoda n=ansible | skipping: [backup-server] => (item=2049) 
+2025-09-05 11:24:48,086 p=92689 u=simoda n=ansible | skipping: [backup-server]
+2025-09-05 11:24:48,091 p=92689 u=simoda n=ansible | skipping: [client-workstation] => (item=22) 
+2025-09-05 11:24:48,093 p=92689 u=simoda n=ansible | skipping: [client-workstation] => (item=445) 
+2025-09-05 11:24:48,096 p=92689 u=simoda n=ansible | skipping: [client-workstation] => (item=2049) 
+2025-09-05 11:24:48,097 p=92689 u=simoda n=ansible | skipping: [client-workstation]
+2025-09-05 11:24:48,838 p=92689 u=simoda n=ansible | ok: [file-server] => (item=22)
+2025-09-05 11:24:49,211 p=92689 u=simoda n=ansible | changed: [file-server] => (item=445)
+2025-09-05 11:24:49,530 p=92689 u=simoda n=ansible | changed: [file-server] => (item=2049)
+2025-09-05 11:24:49,535 p=92689 u=simoda n=ansible | TASK [common : Enable firewall (RHEL)] **********************************************************************************************
+2025-09-05 11:24:49,557 p=92689 u=simoda n=ansible | skipping: [backup-server]
+2025-09-05 11:24:49,564 p=92689 u=simoda n=ansible | skipping: [client-workstation]
+2025-09-05 11:24:50,106 p=92689 u=simoda n=ansible | ok: [file-server]
+2025-09-05 11:24:50,112 p=92689 u=simoda n=ansible | TASK [common : Configure NTP] *******************************************************************************************************
+2025-09-05 11:24:50,450 p=92689 u=simoda n=ansible | fatal: [file-server]: FAILED! => changed=false 
+  msg: 'Could not find the requested service systemd-timesyncd: host'
+2025-09-05 11:24:50,514 p=92689 u=simoda n=ansible | ok: [client-workstation]
+2025-09-05 11:24:50,515 p=92689 u=simoda n=ansible | ok: [backup-server]
+2025-09-05 11:24:50,548 p=92689 u=simoda n=ansible | PLAY [Configure File Server] ********************************************************************************************************
+2025-09-05 11:24:50,553 p=92689 u=simoda n=ansible | PLAY [Configure Backup Server] ******************************************************************************************************
+2025-09-05 11:24:50,559 p=92689 u=simoda n=ansible | TASK [Gathering Facts] **************************************************************************************************************
+2025-09-05 11:24:51,379 p=92689 u=simoda n=ansible | ok: [backup-server]
+2025-09-05 11:24:51,389 p=92689 u=simoda n=ansible | TASK [backup : Install backup tools] ************************************************************************************************
+2025-09-05 11:24:52,128 p=92689 u=simoda n=ansible | ok: [backup-server]
+2025-09-05 11:24:52,133 p=92689 u=simoda n=ansible | TASK [backup : Create backup directories] *******************************************************************************************
+2025-09-05 11:24:52,435 p=92689 u=simoda n=ansible | ok: [backup-server] => (item=daily)
+2025-09-05 11:24:52,636 p=92689 u=simoda n=ansible | ok: [backup-server] => (item=weekly)
+2025-09-05 11:24:52,815 p=92689 u=simoda n=ansible | ok: [backup-server] => (item=monthly)
+2025-09-05 11:24:52,821 p=92689 u=simoda n=ansible | TASK [backup : Create backup script] ************************************************************************************************
+2025-09-05 11:24:53,398 p=92689 u=simoda n=ansible | ok: [backup-server]
+2025-09-05 11:24:53,402 p=92689 u=simoda n=ansible | TASK [backup : Schedule backup job] *************************************************************************************************
+2025-09-05 11:24:53,700 p=92689 u=simoda n=ansible | ok: [backup-server]
+2025-09-05 11:24:53,705 p=92689 u=simoda n=ansible | TASK [backup : Create backup cleanup script] ****************************************************************************************
+2025-09-05 11:24:54,153 p=92689 u=simoda n=ansible | ok: [backup-server]
+2025-09-05 11:24:54,161 p=92689 u=simoda n=ansible | TASK [backup : Schedule cleanup job] ************************************************************************************************
+2025-09-05 11:24:54,348 p=92689 u=simoda n=ansible | ok: [backup-server]
+2025-09-05 11:24:54,379 p=92689 u=simoda n=ansible | TASK [monitoring : Install monitoring tools] ****************************************************************************************
+2025-09-05 11:24:55,163 p=92689 u=simoda n=ansible | ok: [backup-server]
+2025-09-05 11:24:55,169 p=92689 u=simoda n=ansible | TASK [monitoring : Enable quota on filesystem] **************************************************************************************
+2025-09-05 11:24:55,480 p=92689 u=simoda n=ansible | ok: [backup-server]
+2025-09-05 11:24:55,485 p=92689 u=simoda n=ansible | TASK [monitoring : Initialize quota database] ***************************************************************************************
+2025-09-05 11:24:55,749 p=92689 u=simoda n=ansible | ok: [backup-server]
+2025-09-05 11:24:55,753 p=92689 u=simoda n=ansible | TASK [monitoring : Enable quota] ****************************************************************************************************
+2025-09-05 11:24:55,941 p=92689 u=simoda n=ansible | ok: [backup-server]
+2025-09-05 11:24:55,945 p=92689 u=simoda n=ansible | TASK [monitoring : Create monitoring script] ****************************************************************************************
+2025-09-05 11:24:56,395 p=92689 u=simoda n=ansible | ok: [backup-server]
+2025-09-05 11:24:56,400 p=92689 u=simoda n=ansible | TASK [monitoring : Schedule monitoring] *********************************************************************************************
+2025-09-05 11:24:56,592 p=92689 u=simoda n=ansible | ok: [backup-server]
+2025-09-05 11:24:56,609 p=92689 u=simoda n=ansible | PLAY [Configure Client Workstation] *************************************************************************************************
+2025-09-05 11:24:56,615 p=92689 u=simoda n=ansible | TASK [Gathering Facts] **************************************************************************************************************
+2025-09-05 11:24:57,456 p=92689 u=simoda n=ansible | ok: [client-workstation]
+2025-09-05 11:24:57,466 p=92689 u=simoda n=ansible | TASK [autofs : Install autofs] ******************************************************************************************************
+2025-09-05 11:24:58,259 p=92689 u=simoda n=ansible | ok: [client-workstation]
+2025-09-05 11:24:58,263 p=92689 u=simoda n=ansible | TASK [autofs : Configure autofs master] *********************************************************************************************
+2025-09-05 11:24:58,705 p=92689 u=simoda n=ansible | ok: [client-workstation]
+2025-09-05 11:24:58,710 p=92689 u=simoda n=ansible | TASK [autofs : Configure autofs maps] ***********************************************************************************************
+2025-09-05 11:24:59,136 p=92689 u=simoda n=ansible | ok: [client-workstation]
+2025-09-05 11:24:59,141 p=92689 u=simoda n=ansible | TASK [autofs : Create mount points] *************************************************************************************************
+2025-09-05 11:24:59,326 p=92689 u=simoda n=ansible | ok: [client-workstation]
+2025-09-05 11:24:59,331 p=92689 u=simoda n=ansible | TASK [autofs : Start and enable autofs] *********************************************************************************************
+2025-09-05 11:24:59,673 p=92689 u=simoda n=ansible | ok: [client-workstation]
+2025-09-05 11:24:59,692 p=92689 u=simoda n=ansible | PLAY RECAP **************************************************************************************************************************
+2025-09-05 11:24:59,692 p=92689 u=simoda n=ansible | backup-server              : ok=19   changed=1    unreachable=0    failed=0    skipped=5    rescued=0    ignored=0   
+2025-09-05 11:24:59,693 p=92689 u=simoda n=ansible | client-workstation         : ok=12   changed=0    unreachable=0    failed=0    skipped=5    rescued=0    ignored=0   
+2025-09-05 11:24:59,693 p=92689 u=simoda n=ansible | file-server                : ok=6    changed=2    unreachable=0    failed=1    skipped=4    rescued=0    ignored=1   
+2025-09-05 11:29:50,899 p=97259 u=simoda n=ansible | PLAY [Deploy Enterprise File Server Platform] ***************************************************************************************
+2025-09-05 11:29:50,906 p=97259 u=simoda n=ansible | TASK [Gathering Facts] **************************************************************************************************************
+2025-09-05 11:29:52,257 p=97259 u=simoda n=ansible | ok: [file-server]
+2025-09-05 11:29:52,908 p=97259 u=simoda n=ansible | ok: [client-workstation]
+2025-09-05 11:29:52,910 p=97259 u=simoda n=ansible | ok: [backup-server]
+2025-09-05 11:29:52,934 p=97259 u=simoda n=ansible | TASK [common : Update package cache (Ubuntu)] ***************************************************************************************
+2025-09-05 11:29:52,960 p=97259 u=simoda n=ansible | skipping: [file-server]
+2025-09-05 11:29:53,714 p=97259 u=simoda n=ansible | ok: [backup-server]
+2025-09-05 11:29:53,718 p=97259 u=simoda n=ansible | ok: [client-workstation]
+2025-09-05 11:29:53,723 p=97259 u=simoda n=ansible | TASK [common : Install base packages (Ubuntu)] **************************************************************************************
+2025-09-05 11:29:53,737 p=97259 u=simoda n=ansible | skipping: [file-server]
+2025-09-05 11:29:54,664 p=97259 u=simoda n=ansible | ok: [backup-server]
+2025-09-05 11:29:54,704 p=97259 u=simoda n=ansible | ok: [client-workstation]
+2025-09-05 11:29:54,708 p=97259 u=simoda n=ansible | TASK [common : Enable CRB repository (RHEL)] ****************************************************************************************
+2025-09-05 11:29:54,735 p=97259 u=simoda n=ansible | skipping: [backup-server]
+2025-09-05 11:29:54,744 p=97259 u=simoda n=ansible | skipping: [client-workstation]
+2025-09-05 11:29:57,240 p=97259 u=simoda n=ansible | fatal: [file-server]: FAILED! => changed=true 
+  cmd:
+  - dnf
+  - config-manager
+  - --set-enabled
+  - crb
+  delta: '0:00:02.231562'
+  end: '2025-09-05 11:29:57.416766'
+  msg: non-zero return code
+  rc: 1
+  start: '2025-09-05 11:29:55.185204'
+  stderr: 'Error: No matching repo to modify: crb.'
+  stderr_lines: <omitted>
+  stdout: Updating Subscription Management repositories.
+  stdout_lines: <omitted>
+2025-09-05 11:29:57,241 p=97259 u=simoda n=ansible | ...ignoring
+2025-09-05 11:29:57,245 p=97259 u=simoda n=ansible | TASK [common : Enable EPEL repository (RHEL)] ***************************************************************************************
+2025-09-05 11:29:57,268 p=97259 u=simoda n=ansible | skipping: [backup-server]
+2025-09-05 11:29:57,275 p=97259 u=simoda n=ansible | skipping: [client-workstation]
+2025-09-05 11:30:03,179 p=97259 u=simoda n=ansible | ok: [file-server]
+2025-09-05 11:30:03,185 p=97259 u=simoda n=ansible | TASK [common : Install base packages (RHEL)] ****************************************************************************************
+2025-09-05 11:30:03,209 p=97259 u=simoda n=ansible | skipping: [backup-server]
+2025-09-05 11:30:03,220 p=97259 u=simoda n=ansible | skipping: [client-workstation]
+2025-09-05 11:30:06,376 p=97259 u=simoda n=ansible | ok: [file-server]
+2025-09-05 11:30:06,382 p=97259 u=simoda n=ansible | TASK [common : Configure firewall (Ubuntu)] *****************************************************************************************
+2025-09-05 11:30:06,399 p=97259 u=simoda n=ansible | skipping: [file-server] => (item=22) 
+2025-09-05 11:30:06,400 p=97259 u=simoda n=ansible | skipping: [file-server] => (item=445) 
+2025-09-05 11:30:06,400 p=97259 u=simoda n=ansible | skipping: [file-server] => (item=2049) 
+2025-09-05 11:30:06,407 p=97259 u=simoda n=ansible | skipping: [file-server]
+2025-09-05 11:30:07,011 p=97259 u=simoda n=ansible | ok: [backup-server] => (item=22)
+2025-09-05 11:30:07,027 p=97259 u=simoda n=ansible | ok: [client-workstation] => (item=22)
+2025-09-05 11:30:07,546 p=97259 u=simoda n=ansible | ok: [backup-server] => (item=445)
+2025-09-05 11:30:08,043 p=97259 u=simoda n=ansible | ok: [backup-server] => (item=2049)
+2025-09-05 11:30:08,573 p=97259 u=simoda n=ansible | ok: [client-workstation] => (item=445)
+2025-09-05 11:30:09,079 p=97259 u=simoda n=ansible | ok: [client-workstation] => (item=2049)
+2025-09-05 11:30:09,084 p=97259 u=simoda n=ansible | TASK [common : Enable firewall (Ubuntu)] ********************************************************************************************
+2025-09-05 11:30:09,107 p=97259 u=simoda n=ansible | skipping: [file-server]
+2025-09-05 11:30:09,808 p=97259 u=simoda n=ansible | ok: [backup-server]
+2025-09-05 11:30:09,814 p=97259 u=simoda n=ansible | ok: [client-workstation]
+2025-09-05 11:30:09,818 p=97259 u=simoda n=ansible | TASK [common : Configure firewall (RHEL)] *******************************************************************************************
+2025-09-05 11:30:09,840 p=97259 u=simoda n=ansible | skipping: [backup-server] => (item=22) 
+2025-09-05 11:30:09,841 p=97259 u=simoda n=ansible | skipping: [backup-server] => (item=445) 
+2025-09-05 11:30:09,844 p=97259 u=simoda n=ansible | skipping: [backup-server] => (item=2049) 
+2025-09-05 11:30:09,845 p=97259 u=simoda n=ansible | skipping: [backup-server]
+2025-09-05 11:30:09,849 p=97259 u=simoda n=ansible | skipping: [client-workstation] => (item=22) 
+2025-09-05 11:30:09,851 p=97259 u=simoda n=ansible | skipping: [client-workstation] => (item=445) 
+2025-09-05 11:30:09,853 p=97259 u=simoda n=ansible | skipping: [client-workstation] => (item=2049) 
+2025-09-05 11:30:09,854 p=97259 u=simoda n=ansible | skipping: [client-workstation]
+2025-09-05 11:30:10,232 p=97259 u=simoda n=ansible | ok: [file-server] => (item=22)
+2025-09-05 11:30:10,567 p=97259 u=simoda n=ansible | ok: [file-server] => (item=445)
+2025-09-05 11:30:10,872 p=97259 u=simoda n=ansible | ok: [file-server] => (item=2049)
+2025-09-05 11:30:10,877 p=97259 u=simoda n=ansible | TASK [common : Enable firewall (RHEL)] **********************************************************************************************
+2025-09-05 11:30:10,900 p=97259 u=simoda n=ansible | skipping: [backup-server]
+2025-09-05 11:30:10,909 p=97259 u=simoda n=ansible | skipping: [client-workstation]
+2025-09-05 11:30:11,425 p=97259 u=simoda n=ansible | ok: [file-server]
+2025-09-05 11:30:11,431 p=97259 u=simoda n=ansible | TASK [common : Configure NTP (Ubuntu)] **********************************************************************************************
+2025-09-05 11:30:11,444 p=97259 u=simoda n=ansible | skipping: [file-server]
+2025-09-05 11:30:11,816 p=97259 u=simoda n=ansible | ok: [backup-server]
+2025-09-05 11:30:11,824 p=97259 u=simoda n=ansible | ok: [client-workstation]
+2025-09-05 11:30:11,828 p=97259 u=simoda n=ansible | TASK [common : Install and configure NTP (RHEL)] ************************************************************************************
+2025-09-05 11:30:11,849 p=97259 u=simoda n=ansible | skipping: [backup-server]
+2025-09-05 11:30:11,856 p=97259 u=simoda n=ansible | skipping: [client-workstation]
+2025-09-05 11:30:14,730 p=97259 u=simoda n=ansible | ok: [file-server]
+2025-09-05 11:30:14,735 p=97259 u=simoda n=ansible | TASK [common : Configure NTP (RHEL)] ************************************************************************************************
+2025-09-05 11:30:14,757 p=97259 u=simoda n=ansible | skipping: [backup-server]
+2025-09-05 11:30:14,763 p=97259 u=simoda n=ansible | skipping: [client-workstation]
+2025-09-05 11:30:15,068 p=97259 u=simoda n=ansible | ok: [file-server]
+2025-09-05 11:30:15,114 p=97259 u=simoda n=ansible | PLAY [Configure File Server] ********************************************************************************************************
+2025-09-05 11:30:15,139 p=97259 u=simoda n=ansible | TASK [Gathering Facts] **************************************************************************************************************
+2025-09-05 11:30:15,915 p=97259 u=simoda n=ansible | ok: [file-server]
+2025-09-05 11:30:15,926 p=97259 u=simoda n=ansible | TASK [samba : Install Samba packages] ***********************************************************************************************
+2025-09-05 11:30:16,215 p=97259 u=simoda n=ansible | [WARNING]: Updating cache and auto-installing missing dependency: python3-apt
+
+2025-09-05 11:30:16,216 p=97259 u=simoda n=ansible | fatal: [file-server]: FAILED! => changed=false 
+  cmd: apt-get update
+  msg: '[Errno 2] No such file or directory: b''apt-get'''
+  rc: 2
+  stderr: ''
+  stderr_lines: <omitted>
+  stdout: ''
+  stdout_lines: <omitted>
+2025-09-05 11:30:16,217 p=97259 u=simoda n=ansible | PLAY RECAP **************************************************************************************************************************
+2025-09-05 11:30:16,217 p=97259 u=simoda n=ansible | backup-server              : ok=6    changed=0    unreachable=0    failed=0    skipped=7    rescued=0    ignored=0   
+2025-09-05 11:30:16,217 p=97259 u=simoda n=ansible | client-workstation         : ok=6    changed=0    unreachable=0    failed=0    skipped=7    rescued=0    ignored=0   
+2025-09-05 11:30:16,218 p=97259 u=simoda n=ansible | file-server                : ok=9    changed=1    unreachable=0    failed=1    skipped=5    rescued=0    ignored=1   
+2025-09-05 12:05:46,753 p=122779 u=simoda n=ansible | PLAY [Deploy Enterprise File Server Platform] ***************************************************************************************
+2025-09-05 12:05:46,763 p=122779 u=simoda n=ansible | TASK [Gathering Facts] **************************************************************************************************************
+2025-09-05 12:05:48,269 p=122779 u=simoda n=ansible | ok: [file-server]
+2025-09-05 12:05:49,024 p=122779 u=simoda n=ansible | ok: [backup-server]
+2025-09-05 12:05:49,195 p=122779 u=simoda n=ansible | ok: [client-workstation]
+2025-09-05 12:05:49,217 p=122779 u=simoda n=ansible | TASK [common : Update package cache (Ubuntu)] ***************************************************************************************
+2025-09-05 12:05:49,243 p=122779 u=simoda n=ansible | skipping: [file-server]
+2025-09-05 12:05:50,009 p=122779 u=simoda n=ansible | ok: [backup-server]
+2025-09-05 12:05:50,164 p=122779 u=simoda n=ansible | ok: [client-workstation]
+2025-09-05 12:05:50,169 p=122779 u=simoda n=ansible | TASK [common : Install base packages (Ubuntu)] **************************************************************************************
+2025-09-05 12:05:50,192 p=122779 u=simoda n=ansible | skipping: [file-server]
+2025-09-05 12:05:51,030 p=122779 u=simoda n=ansible | ok: [backup-server]
+2025-09-05 12:05:51,075 p=122779 u=simoda n=ansible | ok: [client-workstation]
+2025-09-05 12:05:51,079 p=122779 u=simoda n=ansible | TASK [common : Enable CRB repository (RHEL)] ****************************************************************************************
+2025-09-05 12:05:51,105 p=122779 u=simoda n=ansible | skipping: [backup-server]
+2025-09-05 12:05:51,117 p=122779 u=simoda n=ansible | skipping: [client-workstation]
+2025-09-05 12:05:53,676 p=122779 u=simoda n=ansible | fatal: [file-server]: FAILED! => changed=true 
+  cmd:
+  - dnf
+  - config-manager
+  - --set-enabled
+  - crb
+  delta: '0:00:02.289878'
+  end: '2025-09-05 12:05:53.790917'
+  msg: non-zero return code
+  rc: 1
+  start: '2025-09-05 12:05:51.501039'
+  stderr: 'Error: No matching repo to modify: crb.'
+  stderr_lines: <omitted>
+  stdout: Updating Subscription Management repositories.
+  stdout_lines: <omitted>
+2025-09-05 12:05:53,676 p=122779 u=simoda n=ansible | ...ignoring
+2025-09-05 12:05:53,685 p=122779 u=simoda n=ansible | TASK [common : Enable EPEL repository (RHEL)] ***************************************************************************************
+2025-09-05 12:05:53,711 p=122779 u=simoda n=ansible | skipping: [backup-server]
+2025-09-05 12:05:53,716 p=122779 u=simoda n=ansible | skipping: [client-workstation]
+2025-09-05 12:06:00,610 p=122779 u=simoda n=ansible | ok: [file-server]
+2025-09-05 12:06:00,615 p=122779 u=simoda n=ansible | TASK [common : Install base packages (RHEL)] ****************************************************************************************
+2025-09-05 12:06:00,638 p=122779 u=simoda n=ansible | skipping: [backup-server]
+2025-09-05 12:06:00,646 p=122779 u=simoda n=ansible | skipping: [client-workstation]
+2025-09-05 12:06:03,506 p=122779 u=simoda n=ansible | ok: [file-server]
+2025-09-05 12:06:03,514 p=122779 u=simoda n=ansible | TASK [common : Configure firewall (Ubuntu)] *****************************************************************************************
+2025-09-05 12:06:03,530 p=122779 u=simoda n=ansible | skipping: [file-server] => (item=22) 
+2025-09-05 12:06:03,534 p=122779 u=simoda n=ansible | skipping: [file-server] => (item=445) 
+2025-09-05 12:06:03,539 p=122779 u=simoda n=ansible | skipping: [file-server] => (item=2049) 
+2025-09-05 12:06:03,543 p=122779 u=simoda n=ansible | skipping: [file-server]
+2025-09-05 12:06:04,153 p=122779 u=simoda n=ansible | ok: [client-workstation] => (item=22)
+2025-09-05 12:06:04,161 p=122779 u=simoda n=ansible | ok: [backup-server] => (item=22)
+2025-09-05 12:06:04,700 p=122779 u=simoda n=ansible | ok: [backup-server] => (item=445)
+2025-09-05 12:06:04,720 p=122779 u=simoda n=ansible | ok: [client-workstation] => (item=445)
+2025-09-05 12:06:05,212 p=122779 u=simoda n=ansible | ok: [backup-server] => (item=2049)
+2025-09-05 12:06:05,221 p=122779 u=simoda n=ansible | ok: [client-workstation] => (item=2049)
+2025-09-05 12:06:05,226 p=122779 u=simoda n=ansible | TASK [common : Enable firewall (Ubuntu)] ********************************************************************************************
+2025-09-05 12:06:05,239 p=122779 u=simoda n=ansible | skipping: [file-server]
+2025-09-05 12:06:05,955 p=122779 u=simoda n=ansible | ok: [backup-server]
+2025-09-05 12:06:05,975 p=122779 u=simoda n=ansible | ok: [client-workstation]
+2025-09-05 12:06:05,980 p=122779 u=simoda n=ansible | TASK [common : Configure firewall (RHEL)] *******************************************************************************************
+2025-09-05 12:06:06,007 p=122779 u=simoda n=ansible | skipping: [backup-server] => (item=22) 
+2025-09-05 12:06:06,008 p=122779 u=simoda n=ansible | skipping: [backup-server] => (item=445) 
+2025-09-05 12:06:06,012 p=122779 u=simoda n=ansible | skipping: [backup-server] => (item=2049) 
+2025-09-05 12:06:06,013 p=122779 u=simoda n=ansible | skipping: [backup-server]
+2025-09-05 12:06:06,016 p=122779 u=simoda n=ansible | skipping: [client-workstation] => (item=22) 
+2025-09-05 12:06:06,018 p=122779 u=simoda n=ansible | skipping: [client-workstation] => (item=445) 
+2025-09-05 12:06:06,021 p=122779 u=simoda n=ansible | skipping: [client-workstation] => (item=2049) 
+2025-09-05 12:06:06,022 p=122779 u=simoda n=ansible | skipping: [client-workstation]
+2025-09-05 12:06:06,485 p=122779 u=simoda n=ansible | ok: [file-server] => (item=22)
+2025-09-05 12:06:06,805 p=122779 u=simoda n=ansible | ok: [file-server] => (item=445)
+2025-09-05 12:06:07,125 p=122779 u=simoda n=ansible | ok: [file-server] => (item=2049)
+2025-09-05 12:06:07,129 p=122779 u=simoda n=ansible | TASK [common : Enable firewall (RHEL)] **********************************************************************************************
+2025-09-05 12:06:07,154 p=122779 u=simoda n=ansible | skipping: [backup-server]
+2025-09-05 12:06:07,161 p=122779 u=simoda n=ansible | skipping: [client-workstation]
+2025-09-05 12:06:07,687 p=122779 u=simoda n=ansible | ok: [file-server]
+2025-09-05 12:06:07,694 p=122779 u=simoda n=ansible | TASK [common : Configure NTP (Ubuntu)] **********************************************************************************************
+2025-09-05 12:06:07,709 p=122779 u=simoda n=ansible | skipping: [file-server]
+2025-09-05 12:06:08,068 p=122779 u=simoda n=ansible | ok: [backup-server]
+2025-09-05 12:06:08,083 p=122779 u=simoda n=ansible | ok: [client-workstation]
+2025-09-05 12:06:08,088 p=122779 u=simoda n=ansible | TASK [common : Install and configure NTP (RHEL)] ************************************************************************************
+2025-09-05 12:06:08,112 p=122779 u=simoda n=ansible | skipping: [backup-server]
+2025-09-05 12:06:08,121 p=122779 u=simoda n=ansible | skipping: [client-workstation]
+2025-09-05 12:06:10,960 p=122779 u=simoda n=ansible | ok: [file-server]
+2025-09-05 12:06:10,965 p=122779 u=simoda n=ansible | TASK [common : Configure NTP (RHEL)] ************************************************************************************************
+2025-09-05 12:06:10,989 p=122779 u=simoda n=ansible | skipping: [backup-server]
+2025-09-05 12:06:10,997 p=122779 u=simoda n=ansible | skipping: [client-workstation]
+2025-09-05 12:06:11,305 p=122779 u=simoda n=ansible | ok: [file-server]
+2025-09-05 12:06:11,353 p=122779 u=simoda n=ansible | PLAY [Configure File Server] ********************************************************************************************************
+2025-09-05 12:06:11,380 p=122779 u=simoda n=ansible | TASK [Gathering Facts] **************************************************************************************************************
+2025-09-05 12:06:12,167 p=122779 u=simoda n=ansible | ok: [file-server]
+2025-09-05 12:06:12,176 p=122779 u=simoda n=ansible | TASK [samba : Install Samba packages (Ubuntu)] **************************************************************************************
+2025-09-05 12:06:12,188 p=122779 u=simoda n=ansible | skipping: [file-server]
+2025-09-05 12:06:12,192 p=122779 u=simoda n=ansible | TASK [samba : Install Samba packages (RHEL)] ****************************************************************************************
+2025-09-05 12:06:18,750 p=122779 u=simoda n=ansible | changed: [file-server]
+2025-09-05 12:06:18,755 p=122779 u=simoda n=ansible | TASK [samba : Create storage directories] *******************************************************************************************
+2025-09-05 12:06:19,052 p=122779 u=simoda n=ansible | changed: [file-server] => (item=shared)
+2025-09-05 12:06:19,243 p=122779 u=simoda n=ansible | changed: [file-server] => (item=users)
+2025-09-05 12:06:19,248 p=122779 u=simoda n=ansible | TASK [samba : Configure Kerberos] ***************************************************************************************************
+2025-09-05 12:06:20,077 p=122779 u=simoda n=ansible | changed: [file-server]
+2025-09-05 12:06:20,082 p=122779 u=simoda n=ansible | TASK [samba : Configure Samba] ******************************************************************************************************
+2025-09-05 12:06:20,718 p=122779 u=simoda n=ansible | changed: [file-server]
+2025-09-05 12:06:20,723 p=122779 u=simoda n=ansible | TASK [samba : Join AD domain] *******************************************************************************************************
+2025-09-05 12:06:20,736 p=122779 u=simoda n=ansible | fatal: [file-server]: FAILED! => 
+  msg: |-
+    The task includes an option with an undefined variable. The error was: 'ad_admin_password' is undefined. 'ad_admin_password' is undefined
+  
+    The error appears to be in '/home/simoda/dev/projects/ansible-enterprise-file-server/roles/samba/tasks/main.yml': line 47, column 3, but may
+    be elsewhere in the file depending on the exact syntax problem.
+  
+    The offending line appears to be:
+  
+  
+    - name: Join AD domain
+      ^ here
+2025-09-05 12:06:20,737 p=122779 u=simoda n=ansible | PLAY RECAP **************************************************************************************************************************
+2025-09-05 12:06:20,738 p=122779 u=simoda n=ansible | backup-server              : ok=6    changed=0    unreachable=0    failed=0    skipped=7    rescued=0    ignored=0   
+2025-09-05 12:06:20,738 p=122779 u=simoda n=ansible | client-workstation         : ok=6    changed=0    unreachable=0    failed=0    skipped=7    rescued=0    ignored=0   
+2025-09-05 12:06:20,738 p=122779 u=simoda n=ansible | file-server                : ok=13   changed=5    unreachable=0    failed=1    skipped=6    rescued=0    ignored=1   
+2025-09-05 12:16:27,956 p=130514 u=simoda n=ansible | PLAY [Deploy Enterprise File Server Platform] ***************************************************************************************
+2025-09-05 12:16:27,964 p=130514 u=simoda n=ansible | TASK [Gathering Facts] **************************************************************************************************************
+2025-09-05 12:16:29,358 p=130514 u=simoda n=ansible | ok: [file-server]
+2025-09-05 12:16:30,001 p=130514 u=simoda n=ansible | ok: [client-workstation]
+2025-09-05 12:16:30,039 p=130514 u=simoda n=ansible | ok: [backup-server]
+2025-09-05 12:16:30,060 p=130514 u=simoda n=ansible | TASK [common : Update package cache (Ubuntu)] ***************************************************************************************
+2025-09-05 12:16:30,082 p=130514 u=simoda n=ansible | skipping: [file-server]
+2025-09-05 12:16:30,786 p=130514 u=simoda n=ansible | ok: [client-workstation]
+2025-09-05 12:16:30,812 p=130514 u=simoda n=ansible | ok: [backup-server]
+2025-09-05 12:16:30,818 p=130514 u=simoda n=ansible | TASK [common : Install base packages (Ubuntu)] **************************************************************************************
+2025-09-05 12:16:30,830 p=130514 u=simoda n=ansible | skipping: [file-server]
+2025-09-05 12:16:31,696 p=130514 u=simoda n=ansible | ok: [backup-server]
+2025-09-05 12:16:31,738 p=130514 u=simoda n=ansible | ok: [client-workstation]
+2025-09-05 12:16:31,742 p=130514 u=simoda n=ansible | TASK [common : Enable CRB repository (RHEL)] ****************************************************************************************
+2025-09-05 12:16:31,765 p=130514 u=simoda n=ansible | skipping: [backup-server]
+2025-09-05 12:16:31,772 p=130514 u=simoda n=ansible | skipping: [client-workstation]
+2025-09-05 12:16:34,184 p=130514 u=simoda n=ansible | fatal: [file-server]: FAILED! => changed=true 
+  cmd:
+  - dnf
+  - config-manager
+  - --set-enabled
+  - crb
+  delta: '0:00:02.170875'
+  end: '2025-09-05 12:16:34.421985'
+  msg: non-zero return code
+  rc: 1
+  start: '2025-09-05 12:16:32.251110'
+  stderr: 'Error: No matching repo to modify: crb.'
+  stderr_lines: <omitted>
+  stdout: Updating Subscription Management repositories.
+  stdout_lines: <omitted>
+2025-09-05 12:16:34,184 p=130514 u=simoda n=ansible | ...ignoring
+2025-09-05 12:16:34,189 p=130514 u=simoda n=ansible | TASK [common : Enable EPEL repository (RHEL)] ***************************************************************************************
+2025-09-05 12:16:34,214 p=130514 u=simoda n=ansible | skipping: [backup-server]
+2025-09-05 12:16:34,220 p=130514 u=simoda n=ansible | skipping: [client-workstation]
+2025-09-05 12:16:39,421 p=130514 u=simoda n=ansible | ok: [file-server]
+2025-09-05 12:16:39,427 p=130514 u=simoda n=ansible | TASK [common : Install base packages (RHEL)] ****************************************************************************************
+2025-09-05 12:16:39,449 p=130514 u=simoda n=ansible | skipping: [backup-server]
+2025-09-05 12:16:39,455 p=130514 u=simoda n=ansible | skipping: [client-workstation]
+2025-09-05 12:16:42,327 p=130514 u=simoda n=ansible | ok: [file-server]
+2025-09-05 12:16:42,333 p=130514 u=simoda n=ansible | TASK [common : Configure firewall (Ubuntu)] *****************************************************************************************
+2025-09-05 12:16:42,350 p=130514 u=simoda n=ansible | skipping: [file-server] => (item=22) 
+2025-09-05 12:16:42,351 p=130514 u=simoda n=ansible | skipping: [file-server] => (item=445) 
+2025-09-05 12:16:42,352 p=130514 u=simoda n=ansible | skipping: [file-server] => (item=2049) 
+2025-09-05 12:16:42,358 p=130514 u=simoda n=ansible | skipping: [file-server]
+2025-09-05 12:16:42,956 p=130514 u=simoda n=ansible | ok: [backup-server] => (item=22)
+2025-09-05 12:16:42,969 p=130514 u=simoda n=ansible | ok: [client-workstation] => (item=22)
+2025-09-05 12:16:43,502 p=130514 u=simoda n=ansible | ok: [backup-server] => (item=445)
+2025-09-05 12:16:43,502 p=130514 u=simoda n=ansible | ok: [client-workstation] => (item=445)
+2025-09-05 12:16:44,022 p=130514 u=simoda n=ansible | ok: [backup-server] => (item=2049)
+2025-09-05 12:16:44,034 p=130514 u=simoda n=ansible | ok: [client-workstation] => (item=2049)
+2025-09-05 12:16:44,040 p=130514 u=simoda n=ansible | TASK [common : Enable firewall (Ubuntu)] ********************************************************************************************
+2025-09-05 12:16:44,062 p=130514 u=simoda n=ansible | skipping: [file-server]
+2025-09-05 12:16:44,734 p=130514 u=simoda n=ansible | ok: [backup-server]
+2025-09-05 12:16:44,762 p=130514 u=simoda n=ansible | ok: [client-workstation]
+2025-09-05 12:16:44,767 p=130514 u=simoda n=ansible | TASK [common : Configure firewall (RHEL)] *******************************************************************************************
+2025-09-05 12:16:44,794 p=130514 u=simoda n=ansible | skipping: [backup-server] => (item=22) 
+2025-09-05 12:16:44,795 p=130514 u=simoda n=ansible | skipping: [backup-server] => (item=445) 
+2025-09-05 12:16:44,796 p=130514 u=simoda n=ansible | skipping: [backup-server] => (item=2049) 
+2025-09-05 12:16:44,797 p=130514 u=simoda n=ansible | skipping: [backup-server]
+2025-09-05 12:16:44,801 p=130514 u=simoda n=ansible | skipping: [client-workstation] => (item=22) 
+2025-09-05 12:16:44,803 p=130514 u=simoda n=ansible | skipping: [client-workstation] => (item=445) 
+2025-09-05 12:16:44,806 p=130514 u=simoda n=ansible | skipping: [client-workstation] => (item=2049) 
+2025-09-05 12:16:44,807 p=130514 u=simoda n=ansible | skipping: [client-workstation]
+2025-09-05 12:16:45,216 p=130514 u=simoda n=ansible | ok: [file-server] => (item=22)
+2025-09-05 12:16:45,524 p=130514 u=simoda n=ansible | ok: [file-server] => (item=445)
+2025-09-05 12:16:45,844 p=130514 u=simoda n=ansible | ok: [file-server] => (item=2049)
+2025-09-05 12:16:45,849 p=130514 u=simoda n=ansible | TASK [common : Enable firewall (RHEL)] **********************************************************************************************
+2025-09-05 12:16:45,874 p=130514 u=simoda n=ansible | skipping: [backup-server]
+2025-09-05 12:16:45,880 p=130514 u=simoda n=ansible | skipping: [client-workstation]
+2025-09-05 12:16:46,392 p=130514 u=simoda n=ansible | ok: [file-server]
+2025-09-05 12:16:46,399 p=130514 u=simoda n=ansible | TASK [common : Configure NTP (Ubuntu)] **********************************************************************************************
+2025-09-05 12:16:46,421 p=130514 u=simoda n=ansible | skipping: [file-server]
+2025-09-05 12:16:46,798 p=130514 u=simoda n=ansible | ok: [backup-server]
+2025-09-05 12:16:46,804 p=130514 u=simoda n=ansible | ok: [client-workstation]
+2025-09-05 12:16:46,808 p=130514 u=simoda n=ansible | TASK [common : Install and configure NTP (RHEL)] ************************************************************************************
+2025-09-05 12:16:46,830 p=130514 u=simoda n=ansible | skipping: [backup-server]
+2025-09-05 12:16:46,836 p=130514 u=simoda n=ansible | skipping: [client-workstation]
+2025-09-05 12:16:49,626 p=130514 u=simoda n=ansible | ok: [file-server]
+2025-09-05 12:16:49,630 p=130514 u=simoda n=ansible | TASK [common : Configure NTP (RHEL)] ************************************************************************************************
+2025-09-05 12:16:49,653 p=130514 u=simoda n=ansible | skipping: [backup-server]
+2025-09-05 12:16:49,659 p=130514 u=simoda n=ansible | skipping: [client-workstation]
+2025-09-05 12:16:49,967 p=130514 u=simoda n=ansible | ok: [file-server]
+2025-09-05 12:16:50,014 p=130514 u=simoda n=ansible | PLAY [Configure File Server] ********************************************************************************************************
+2025-09-05 12:16:50,040 p=130514 u=simoda n=ansible | TASK [Gathering Facts] **************************************************************************************************************
+2025-09-05 12:16:50,842 p=130514 u=simoda n=ansible | ok: [file-server]
+2025-09-05 12:16:50,853 p=130514 u=simoda n=ansible | TASK [samba : Install Samba packages (Ubuntu)] **************************************************************************************
+2025-09-05 12:16:50,866 p=130514 u=simoda n=ansible | skipping: [file-server]
+2025-09-05 12:16:50,872 p=130514 u=simoda n=ansible | TASK [samba : Install Samba packages (RHEL)] ****************************************************************************************
+2025-09-05 12:16:53,818 p=130514 u=simoda n=ansible | ok: [file-server]
+2025-09-05 12:16:53,823 p=130514 u=simoda n=ansible | TASK [samba : Create storage directories] *******************************************************************************************
+2025-09-05 12:16:54,154 p=130514 u=simoda n=ansible | ok: [file-server] => (item=shared)
+2025-09-05 12:16:54,344 p=130514 u=simoda n=ansible | ok: [file-server] => (item=users)
+2025-09-05 12:16:54,349 p=130514 u=simoda n=ansible | TASK [samba : Configure Kerberos] ***************************************************************************************************
+2025-09-05 12:16:54,963 p=130514 u=simoda n=ansible | ok: [file-server]
+2025-09-05 12:16:54,967 p=130514 u=simoda n=ansible | TASK [samba : Configure Samba] ******************************************************************************************************
+2025-09-05 12:16:55,487 p=130514 u=simoda n=ansible | ok: [file-server]
+2025-09-05 12:16:55,491 p=130514 u=simoda n=ansible | TASK [samba : Join AD domain] *******************************************************************************************************
+2025-09-05 12:16:57,331 p=130514 u=simoda n=ansible | fatal: [file-server]: FAILED! => changed=false 
+  cmd: |-
+    echo "" | realm join -U administrator simo.local
+  delta: '0:00:01.645464'
+  end: '2025-09-05 12:16:57.508664'
+  failed_when_result: true
+  msg: non-zero return code
+  rc: 1
+  start: '2025-09-05 12:16:55.863200'
+  stderr: |-
+    realm: Already joined to this domain
+    Please check
+        https://red.ht/support_rhel_ad
+    to get help for common issues.
+  stderr_lines: <omitted>
+  stdout: ''
+  stdout_lines: <omitted>
+2025-09-05 12:16:57,332 p=130514 u=simoda n=ansible | PLAY RECAP **************************************************************************************************************************
+2025-09-05 12:16:57,333 p=130514 u=simoda n=ansible | backup-server              : ok=6    changed=0    unreachable=0    failed=0    skipped=7    rescued=0    ignored=0   
+2025-09-05 12:16:57,333 p=130514 u=simoda n=ansible | client-workstation         : ok=6    changed=0    unreachable=0    failed=0    skipped=7    rescued=0    ignored=0   
+2025-09-05 12:16:57,333 p=130514 u=simoda n=ansible | file-server                : ok=13   changed=1    unreachable=0    failed=1    skipped=6    rescued=0    ignored=1   
+2025-09-05 12:43:26,638 p=149984 u=simoda n=ansible | PLAY [Deploy Enterprise File Server Platform] ***************************************************************************************
+2025-09-05 12:43:26,646 p=149984 u=simoda n=ansible | TASK [Gathering Facts] **************************************************************************************************************
+2025-09-05 12:43:28,000 p=149984 u=simoda n=ansible | ok: [file-server]
+2025-09-05 12:43:28,812 p=149984 u=simoda n=ansible | ok: [backup-server]
+2025-09-05 12:43:28,871 p=149984 u=simoda n=ansible | ok: [client-workstation]
+2025-09-05 12:43:28,893 p=149984 u=simoda n=ansible | TASK [common : Update package cache (Ubuntu)] ***************************************************************************************
+2025-09-05 12:43:28,909 p=149984 u=simoda n=ansible | skipping: [file-server]
+2025-09-05 12:43:47,474 p=149984 u=simoda n=ansible | changed: [backup-server]
+2025-09-05 12:46:57,214 p=149984 u=simoda n=ansible | changed: [client-workstation]
+2025-09-05 12:46:57,220 p=149984 u=simoda n=ansible | TASK [common : Install base packages (Ubuntu)] **************************************************************************************
+2025-09-05 12:46:57,244 p=149984 u=simoda n=ansible | skipping: [file-server]
+2025-09-05 12:46:58,296 p=149984 u=simoda n=ansible | ok: [client-workstation]
+2025-09-05 12:46:58,896 p=149984 u=simoda n=ansible | ok: [backup-server]
+2025-09-05 12:46:58,901 p=149984 u=simoda n=ansible | TASK [common : Enable CRB repository (RHEL)] ****************************************************************************************
+2025-09-05 12:46:58,926 p=149984 u=simoda n=ansible | skipping: [backup-server]
+2025-09-05 12:46:58,932 p=149984 u=simoda n=ansible | skipping: [client-workstation]
+2025-09-05 12:47:02,184 p=149984 u=simoda n=ansible | fatal: [file-server]: FAILED! => changed=true 
+  cmd:
+  - dnf
+  - config-manager
+  - --set-enabled
+  - crb
+  delta: '0:00:02.781785'
+  end: '2025-09-05 12:47:02.312512'
+  msg: non-zero return code
+  rc: 1
+  start: '2025-09-05 12:46:59.530727'
+  stderr: 'Error: No matching repo to modify: crb.'
+  stderr_lines: <omitted>
+  stdout: Updating Subscription Management repositories.
+  stdout_lines: <omitted>
+2025-09-05 12:47:02,185 p=149984 u=simoda n=ansible | ...ignoring
+2025-09-05 12:47:02,189 p=149984 u=simoda n=ansible | TASK [common : Enable EPEL repository (RHEL)] ***************************************************************************************
+2025-09-05 12:47:02,213 p=149984 u=simoda n=ansible | skipping: [backup-server]
+2025-09-05 12:47:02,218 p=149984 u=simoda n=ansible | skipping: [client-workstation]
+2025-09-05 12:47:08,330 p=149984 u=simoda n=ansible | ok: [file-server]
+2025-09-05 12:47:08,335 p=149984 u=simoda n=ansible | TASK [common : Install base packages (RHEL)] ****************************************************************************************
+2025-09-05 12:47:08,359 p=149984 u=simoda n=ansible | skipping: [backup-server]
+2025-09-05 12:47:08,367 p=149984 u=simoda n=ansible | skipping: [client-workstation]
+2025-09-05 12:47:11,266 p=149984 u=simoda n=ansible | ok: [file-server]
+2025-09-05 12:47:11,272 p=149984 u=simoda n=ansible | TASK [common : Configure firewall (Ubuntu)] *****************************************************************************************
+2025-09-05 12:47:11,287 p=149984 u=simoda n=ansible | skipping: [file-server] => (item=22) 
+2025-09-05 12:47:11,288 p=149984 u=simoda n=ansible | skipping: [file-server] => (item=445) 
+2025-09-05 12:47:11,292 p=149984 u=simoda n=ansible | skipping: [file-server] => (item=2049) 
+2025-09-05 12:47:11,300 p=149984 u=simoda n=ansible | skipping: [file-server]
+2025-09-05 12:47:11,927 p=149984 u=simoda n=ansible | ok: [backup-server] => (item=22)
+2025-09-05 12:47:11,945 p=149984 u=simoda n=ansible | ok: [client-workstation] => (item=22)
+2025-09-05 12:47:12,480 p=149984 u=simoda n=ansible | ok: [backup-server] => (item=445)
+2025-09-05 12:47:12,498 p=149984 u=simoda n=ansible | ok: [client-workstation] => (item=445)
+2025-09-05 12:47:14,020 p=149984 u=simoda n=ansible | ok: [backup-server] => (item=2049)
+2025-09-05 12:47:14,029 p=149984 u=simoda n=ansible | ok: [client-workstation] => (item=2049)
+2025-09-05 12:47:14,034 p=149984 u=simoda n=ansible | TASK [common : Enable firewall (Ubuntu)] ********************************************************************************************
+2025-09-05 12:47:14,058 p=149984 u=simoda n=ansible | skipping: [file-server]
+2025-09-05 12:47:14,764 p=149984 u=simoda n=ansible | ok: [backup-server]
+2025-09-05 12:47:14,770 p=149984 u=simoda n=ansible | ok: [client-workstation]
+2025-09-05 12:47:14,775 p=149984 u=simoda n=ansible | TASK [common : Configure firewall (RHEL)] *******************************************************************************************
+2025-09-05 12:47:14,800 p=149984 u=simoda n=ansible | skipping: [backup-server] => (item=22) 
+2025-09-05 12:47:14,801 p=149984 u=simoda n=ansible | skipping: [backup-server] => (item=445) 
+2025-09-05 12:47:14,802 p=149984 u=simoda n=ansible | skipping: [backup-server] => (item=2049) 
+2025-09-05 12:47:14,803 p=149984 u=simoda n=ansible | skipping: [backup-server]
+2025-09-05 12:47:14,807 p=149984 u=simoda n=ansible | skipping: [client-workstation] => (item=22) 
+2025-09-05 12:47:14,810 p=149984 u=simoda n=ansible | skipping: [client-workstation] => (item=445) 
+2025-09-05 12:47:14,812 p=149984 u=simoda n=ansible | skipping: [client-workstation] => (item=2049) 
+2025-09-05 12:47:14,813 p=149984 u=simoda n=ansible | skipping: [client-workstation]
+2025-09-05 12:47:15,210 p=149984 u=simoda n=ansible | ok: [file-server] => (item=22)
+2025-09-05 12:47:15,524 p=149984 u=simoda n=ansible | ok: [file-server] => (item=445)
+2025-09-05 12:47:15,839 p=149984 u=simoda n=ansible | ok: [file-server] => (item=2049)
+2025-09-05 12:47:15,845 p=149984 u=simoda n=ansible | TASK [common : Enable firewall (RHEL)] **********************************************************************************************
+2025-09-05 12:47:15,870 p=149984 u=simoda n=ansible | skipping: [backup-server]
+2025-09-05 12:47:15,876 p=149984 u=simoda n=ansible | skipping: [client-workstation]
+2025-09-05 12:47:16,379 p=149984 u=simoda n=ansible | ok: [file-server]
+2025-09-05 12:47:16,386 p=149984 u=simoda n=ansible | TASK [common : Configure NTP (Ubuntu)] **********************************************************************************************
+2025-09-05 12:47:16,414 p=149984 u=simoda n=ansible | skipping: [file-server]
+2025-09-05 12:47:16,784 p=149984 u=simoda n=ansible | ok: [backup-server]
+2025-09-05 12:47:16,826 p=149984 u=simoda n=ansible | ok: [client-workstation]
+2025-09-05 12:47:16,830 p=149984 u=simoda n=ansible | TASK [common : Install and configure NTP (RHEL)] ************************************************************************************
+2025-09-05 12:47:16,857 p=149984 u=simoda n=ansible | skipping: [backup-server]
+2025-09-05 12:47:16,867 p=149984 u=simoda n=ansible | skipping: [client-workstation]
+2025-09-05 12:47:19,667 p=149984 u=simoda n=ansible | ok: [file-server]
+2025-09-05 12:47:19,672 p=149984 u=simoda n=ansible | TASK [common : Configure NTP (RHEL)] ************************************************************************************************
+2025-09-05 12:47:19,695 p=149984 u=simoda n=ansible | skipping: [backup-server]
+2025-09-05 12:47:19,702 p=149984 u=simoda n=ansible | skipping: [client-workstation]
+2025-09-05 12:47:20,006 p=149984 u=simoda n=ansible | ok: [file-server]
+2025-09-05 12:47:20,054 p=149984 u=simoda n=ansible | PLAY [Configure File Server] ********************************************************************************************************
+2025-09-05 12:47:20,083 p=149984 u=simoda n=ansible | TASK [Gathering Facts] **************************************************************************************************************
+2025-09-05 12:47:20,846 p=149984 u=simoda n=ansible | ok: [file-server]
+2025-09-05 12:47:20,856 p=149984 u=simoda n=ansible | TASK [samba : Install Samba packages (Ubuntu)] **************************************************************************************
+2025-09-05 12:47:20,868 p=149984 u=simoda n=ansible | skipping: [file-server]
+2025-09-05 12:47:20,872 p=149984 u=simoda n=ansible | TASK [samba : Install Samba packages (RHEL)] ****************************************************************************************
+2025-09-05 12:47:23,715 p=149984 u=simoda n=ansible | ok: [file-server]
+2025-09-05 12:47:23,720 p=149984 u=simoda n=ansible | TASK [samba : Create storage directories] *******************************************************************************************
+2025-09-05 12:47:24,009 p=149984 u=simoda n=ansible | ok: [file-server] => (item=shared)
+2025-09-05 12:47:24,207 p=149984 u=simoda n=ansible | ok: [file-server] => (item=users)
+2025-09-05 12:47:24,214 p=149984 u=simoda n=ansible | TASK [samba : Configure Kerberos] ***************************************************************************************************
+2025-09-05 12:47:24,848 p=149984 u=simoda n=ansible | ok: [file-server]
+2025-09-05 12:47:24,853 p=149984 u=simoda n=ansible | TASK [samba : Configure Samba] ******************************************************************************************************
+2025-09-05 12:47:25,373 p=149984 u=simoda n=ansible | ok: [file-server]
+2025-09-05 12:47:25,377 p=149984 u=simoda n=ansible | TASK [samba : Join AD domain] *******************************************************************************************************
+2025-09-05 12:47:25,628 p=149984 u=simoda n=ansible | ok: [file-server]
+2025-09-05 12:47:25,634 p=149984 u=simoda n=ansible | TASK [samba : Start and enable services] ********************************************************************************************
+2025-09-05 12:47:25,949 p=149984 u=simoda n=ansible | failed: [file-server] (item=smbd) => changed=false 
+  ansible_loop_var: item
+  item: smbd
+  msg: 'Could not find the requested service smbd: host'
+2025-09-05 12:47:26,254 p=149984 u=simoda n=ansible | failed: [file-server] (item=nmbd) => changed=false 
+  ansible_loop_var: item
+  item: nmbd
+  msg: 'Could not find the requested service nmbd: host'
+2025-09-05 12:47:26,995 p=149984 u=simoda n=ansible | failed: [file-server] (item=winbind) => changed=false 
+  ansible_loop_var: item
+  item: winbind
+  msg: |-
+    Unable to start service winbind: Job for winbind.service failed because the control process exited with error code.
+    See "systemctl status winbind.service" and "journalctl -xeu winbind.service" for details.
+2025-09-05 12:47:26,998 p=149984 u=simoda n=ansible | PLAY RECAP **************************************************************************************************************************
+2025-09-05 12:47:26,998 p=149984 u=simoda n=ansible | backup-server              : ok=6    changed=1    unreachable=0    failed=0    skipped=7    rescued=0    ignored=0   
+2025-09-05 12:47:26,998 p=149984 u=simoda n=ansible | client-workstation         : ok=6    changed=1    unreachable=0    failed=0    skipped=7    rescued=0    ignored=0   
+2025-09-05 12:47:26,998 p=149984 u=simoda n=ansible | file-server                : ok=14   changed=1    unreachable=0    failed=1    skipped=6    rescued=0    ignored=1   
+2025-09-05 13:02:44,131 p=166408 u=simoda n=ansible | PLAY [Deploy Enterprise File Server Platform] ***************************************************************************************
+2025-09-05 13:02:44,150 p=166408 u=simoda n=ansible | TASK [Gathering Facts] **************************************************************************************************************
+2025-09-05 13:02:45,907 p=166408 u=simoda n=ansible | ok: [file-server]
+2025-09-05 13:02:46,762 p=166408 u=simoda n=ansible | ok: [backup-server]
+2025-09-05 13:02:47,206 p=166408 u=simoda n=ansible | ok: [client-workstation]
+2025-09-05 13:02:47,231 p=166408 u=simoda n=ansible | TASK [common : Update package cache (Ubuntu)] ***************************************************************************************
+2025-09-05 13:02:47,256 p=166408 u=simoda n=ansible | skipping: [file-server]
+2025-09-05 13:02:48,077 p=166408 u=simoda n=ansible | ok: [backup-server]
+2025-09-05 13:02:48,084 p=166408 u=simoda n=ansible | ok: [client-workstation]
+2025-09-05 13:02:48,089 p=166408 u=simoda n=ansible | TASK [common : Install base packages (Ubuntu)] **************************************************************************************
+2025-09-05 13:02:48,103 p=166408 u=simoda n=ansible | skipping: [file-server]
+2025-09-05 13:02:49,191 p=166408 u=simoda n=ansible | ok: [backup-server]
+2025-09-05 13:02:49,304 p=166408 u=simoda n=ansible | ok: [client-workstation]
+2025-09-05 13:02:49,310 p=166408 u=simoda n=ansible | TASK [common : Enable CRB repository (RHEL)] ****************************************************************************************
+2025-09-05 13:02:49,331 p=166408 u=simoda n=ansible | skipping: [backup-server]
+2025-09-05 13:02:49,338 p=166408 u=simoda n=ansible | skipping: [client-workstation]
+2025-09-05 13:02:52,023 p=166408 u=simoda n=ansible | fatal: [file-server]: FAILED! => changed=true 
+  cmd:
+  - dnf
+  - config-manager
+  - --set-enabled
+  - crb
+  delta: '0:00:02.414595'
+  end: '2025-09-05 13:02:52.209829'
+  msg: non-zero return code
+  rc: 1
+  start: '2025-09-05 13:02:49.795234'
+  stderr: 'Error: No matching repo to modify: crb.'
+  stderr_lines: <omitted>
+  stdout: Updating Subscription Management repositories.
+  stdout_lines: <omitted>
+2025-09-05 13:02:52,023 p=166408 u=simoda n=ansible | ...ignoring
+2025-09-05 13:02:52,028 p=166408 u=simoda n=ansible | TASK [common : Enable EPEL repository (RHEL)] ***************************************************************************************
+2025-09-05 13:02:52,052 p=166408 u=simoda n=ansible | skipping: [backup-server]
+2025-09-05 13:02:52,058 p=166408 u=simoda n=ansible | skipping: [client-workstation]
+2025-09-05 13:02:58,555 p=166408 u=simoda n=ansible | ok: [file-server]
+2025-09-05 13:02:58,562 p=166408 u=simoda n=ansible | TASK [common : Install base packages (RHEL)] ****************************************************************************************
+2025-09-05 13:02:58,589 p=166408 u=simoda n=ansible | skipping: [backup-server]
+2025-09-05 13:02:58,597 p=166408 u=simoda n=ansible | skipping: [client-workstation]
+2025-09-05 13:03:01,623 p=166408 u=simoda n=ansible | ok: [file-server]
+2025-09-05 13:03:01,627 p=166408 u=simoda n=ansible | TASK [common : Configure firewall (Ubuntu)] *****************************************************************************************
+2025-09-05 13:03:01,644 p=166408 u=simoda n=ansible | skipping: [file-server] => (item=22) 
+2025-09-05 13:03:01,648 p=166408 u=simoda n=ansible | skipping: [file-server] => (item=445) 
+2025-09-05 13:03:01,652 p=166408 u=simoda n=ansible | skipping: [file-server] => (item=2049) 
+2025-09-05 13:03:01,654 p=166408 u=simoda n=ansible | skipping: [file-server]
+2025-09-05 13:03:02,287 p=166408 u=simoda n=ansible | ok: [client-workstation] => (item=22)
+2025-09-05 13:03:02,779 p=166408 u=simoda n=ansible | ok: [client-workstation] => (item=445)
+2025-09-05 13:03:03,277 p=166408 u=simoda n=ansible | ok: [backup-server] => (item=22)
+2025-09-05 13:03:03,304 p=166408 u=simoda n=ansible | ok: [client-workstation] => (item=2049)
+2025-09-05 13:03:03,781 p=166408 u=simoda n=ansible | ok: [backup-server] => (item=445)
+2025-09-05 13:03:05,271 p=166408 u=simoda n=ansible | ok: [backup-server] => (item=2049)
+2025-09-05 13:03:05,276 p=166408 u=simoda n=ansible | TASK [common : Enable firewall (Ubuntu)] ********************************************************************************************
+2025-09-05 13:03:05,299 p=166408 u=simoda n=ansible | skipping: [file-server]
+2025-09-05 13:03:06,013 p=166408 u=simoda n=ansible | ok: [backup-server]
+2025-09-05 13:03:06,033 p=166408 u=simoda n=ansible | ok: [client-workstation]
+2025-09-05 13:03:06,038 p=166408 u=simoda n=ansible | TASK [common : Configure firewall (RHEL)] *******************************************************************************************
+2025-09-05 13:03:06,060 p=166408 u=simoda n=ansible | skipping: [backup-server] => (item=22) 
+2025-09-05 13:03:06,061 p=166408 u=simoda n=ansible | skipping: [backup-server] => (item=445) 
+2025-09-05 13:03:06,062 p=166408 u=simoda n=ansible | skipping: [backup-server] => (item=2049) 
+2025-09-05 13:03:06,063 p=166408 u=simoda n=ansible | skipping: [backup-server]
+2025-09-05 13:03:06,068 p=166408 u=simoda n=ansible | skipping: [client-workstation] => (item=22) 
+2025-09-05 13:03:06,070 p=166408 u=simoda n=ansible | skipping: [client-workstation] => (item=445) 
+2025-09-05 13:03:06,072 p=166408 u=simoda n=ansible | skipping: [client-workstation] => (item=2049) 
+2025-09-05 13:03:06,073 p=166408 u=simoda n=ansible | skipping: [client-workstation]
+2025-09-05 13:03:06,465 p=166408 u=simoda n=ansible | ok: [file-server] => (item=22)
+2025-09-05 13:03:06,792 p=166408 u=simoda n=ansible | ok: [file-server] => (item=445)
+2025-09-05 13:03:07,097 p=166408 u=simoda n=ansible | ok: [file-server] => (item=2049)
+2025-09-05 13:03:07,102 p=166408 u=simoda n=ansible | TASK [common : Enable firewall (RHEL)] **********************************************************************************************
+2025-09-05 13:03:07,128 p=166408 u=simoda n=ansible | skipping: [backup-server]
+2025-09-05 13:03:07,135 p=166408 u=simoda n=ansible | skipping: [client-workstation]
+2025-09-05 13:03:07,672 p=166408 u=simoda n=ansible | ok: [file-server]
+2025-09-05 13:03:07,678 p=166408 u=simoda n=ansible | TASK [common : Configure NTP (Ubuntu)] **********************************************************************************************
+2025-09-05 13:03:07,703 p=166408 u=simoda n=ansible | skipping: [file-server]
+2025-09-05 13:03:08,062 p=166408 u=simoda n=ansible | ok: [backup-server]
+2025-09-05 13:03:08,081 p=166408 u=simoda n=ansible | ok: [client-workstation]
+2025-09-05 13:03:08,085 p=166408 u=simoda n=ansible | TASK [common : Install and configure NTP (RHEL)] ************************************************************************************
+2025-09-05 13:03:08,111 p=166408 u=simoda n=ansible | skipping: [backup-server]
+2025-09-05 13:03:08,117 p=166408 u=simoda n=ansible | skipping: [client-workstation]
+2025-09-05 13:03:11,101 p=166408 u=simoda n=ansible | ok: [file-server]
+2025-09-05 13:03:11,106 p=166408 u=simoda n=ansible | TASK [common : Configure NTP (RHEL)] ************************************************************************************************
+2025-09-05 13:03:11,130 p=166408 u=simoda n=ansible | skipping: [backup-server]
+2025-09-05 13:03:11,137 p=166408 u=simoda n=ansible | skipping: [client-workstation]
+2025-09-05 13:03:11,450 p=166408 u=simoda n=ansible | ok: [file-server]
+2025-09-05 13:03:11,523 p=166408 u=simoda n=ansible | PLAY [Configure File Server] ********************************************************************************************************
+2025-09-05 13:03:11,531 p=166408 u=simoda n=ansible | TASK [Gathering Facts] **************************************************************************************************************
+2025-09-05 13:03:12,350 p=166408 u=simoda n=ansible | ok: [file-server]
+2025-09-05 13:03:12,361 p=166408 u=simoda n=ansible | TASK [samba : Install Samba packages (Ubuntu)] **************************************************************************************
+2025-09-05 13:03:12,374 p=166408 u=simoda n=ansible | skipping: [file-server]
+2025-09-05 13:03:12,378 p=166408 u=simoda n=ansible | TASK [samba : Install Samba packages (RHEL)] ****************************************************************************************
+2025-09-05 13:03:15,662 p=166408 u=simoda n=ansible | ok: [file-server]
+2025-09-05 13:03:15,667 p=166408 u=simoda n=ansible | TASK [samba : Create storage directories] *******************************************************************************************
+2025-09-05 13:03:15,989 p=166408 u=simoda n=ansible | ok: [file-server] => (item=shared)
+2025-09-05 13:03:16,187 p=166408 u=simoda n=ansible | ok: [file-server] => (item=users)
+2025-09-05 13:03:16,195 p=166408 u=simoda n=ansible | TASK [samba : Configure Kerberos] ***************************************************************************************************
+2025-09-05 13:03:16,834 p=166408 u=simoda n=ansible | ok: [file-server]
+2025-09-05 13:03:16,839 p=166408 u=simoda n=ansible | TASK [samba : Configure Samba] ******************************************************************************************************
+2025-09-05 13:03:17,389 p=166408 u=simoda n=ansible | ok: [file-server]
+2025-09-05 13:03:17,395 p=166408 u=simoda n=ansible | TASK [samba : Join AD domain] *******************************************************************************************************
+2025-09-05 13:03:17,662 p=166408 u=simoda n=ansible | ok: [file-server]
+2025-09-05 13:03:17,667 p=166408 u=simoda n=ansible | TASK [samba : Start and enable services (Ubuntu)] ***********************************************************************************
+2025-09-05 13:03:17,680 p=166408 u=simoda n=ansible | skipping: [file-server] => (item=smbd) 
+2025-09-05 13:03:17,682 p=166408 u=simoda n=ansible | skipping: [file-server] => (item=nmbd) 
+2025-09-05 13:03:17,685 p=166408 u=simoda n=ansible | skipping: [file-server] => (item=winbind) 
+2025-09-05 13:03:17,686 p=166408 u=simoda n=ansible | skipping: [file-server]
+2025-09-05 13:03:17,694 p=166408 u=simoda n=ansible | TASK [samba : Start and enable services (RHEL)] *************************************************************************************
+2025-09-05 13:03:18,503 p=166408 u=simoda n=ansible | changed: [file-server] => (item=smb)
+2025-09-05 13:03:19,170 p=166408 u=simoda n=ansible | changed: [file-server] => (item=nmb)
+2025-09-05 13:03:19,580 p=166408 u=simoda n=ansible | failed: [file-server] (item=winbind) => changed=false 
+  ansible_loop_var: item
+  item: winbind
+  msg: |-
+    Unable to start service winbind: Job for winbind.service failed because the control process exited with error code.
+    See "systemctl status winbind.service" and "journalctl -xeu winbind.service" for details.
+2025-09-05 13:03:19,584 p=166408 u=simoda n=ansible | PLAY RECAP **************************************************************************************************************************
+2025-09-05 13:03:19,584 p=166408 u=simoda n=ansible | backup-server              : ok=6    changed=0    unreachable=0    failed=0    skipped=7    rescued=0    ignored=0   
+2025-09-05 13:03:19,585 p=166408 u=simoda n=ansible | client-workstation         : ok=6    changed=0    unreachable=0    failed=0    skipped=7    rescued=0    ignored=0   
+2025-09-05 13:03:19,585 p=166408 u=simoda n=ansible | file-server                : ok=14   changed=1    unreachable=0    failed=1    skipped=7    rescued=0    ignored=1   
+2025-09-05 20:57:55,316 p=298694 u=simoda n=ansible | PLAY [Debug AD Integration] *********************************************************************************************************
+2025-09-05 20:57:55,328 p=298694 u=simoda n=ansible | TASK [Gathering Facts] **************************************************************************************************************
+2025-09-05 20:57:58,145 p=298694 u=simoda n=ansible | [WARNING]: Unhandled error in Python interpreter discovery for host file-server: Failed to connect to the host via ssh: ssh: connect
+to host 192.168.198.141 port 22: No route to host
+
+2025-09-05 20:58:08,169 p=298694 u=simoda n=ansible | fatal: [file-server]: UNREACHABLE! => changed=false 
+  msg: |-
+    Data could not be sent to remote host "192.168.198.141". Make sure this host can be reached over ssh: ssh: connect to host 192.168.198.141 port 22: Connection timed out
+  unreachable: true
+2025-09-05 20:58:08,170 p=298694 u=simoda n=ansible | PLAY RECAP **************************************************************************************************************************
+2025-09-05 20:58:08,170 p=298694 u=simoda n=ansible | file-server                : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   

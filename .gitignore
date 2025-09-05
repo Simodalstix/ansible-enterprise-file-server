@@ -1,0 +1,25 @@
+# Environment variables
+.env
+
+# Ansible
+*.retry
+logs/
+.vault_pass
+
+# Terraform (for future cloud extensions)
+*.tfstate
+*.tfstate.*
+.terraform/
+.terraform.lock.hcl
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Backup files
+*.bak
+*.backup

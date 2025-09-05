@@ -4,6 +4,7 @@ environment: "{{ env | default('dev') }}"
 
 # Network Configuration  
 network_subnet: 192.168.198.0/24
+file_server_ip: 192.168.198.141
 dns_servers:
   - 192.168.198.10  # AD Server
   - 8.8.8.8

@@ -1,0 +1,34 @@
+---
+- name: Debug AD Integration
+  hosts: file_servers
+  become: yes
+  tasks:
+    - name: Check realm status
+      command: realm list
+      register: realm_status
+      
+    - name: Show realm status
+      debug:
+        var: realm_status.stdout_lines
+        
+    - name: Check if wbinfo exists
+      stat:
+        path: /usr/bin/wbinfo
+      register: wbinfo_exists
+      
+    - name: Install samba-winbind-clients if missing
+      dnf:
+        name: samba-winbind-clients
+        state: present
+      when: not wbinfo_exists.stat.exists and ansible_os_family == "RedHat"
+      
+    - name: Test domain trust (if wbinfo exists)
+      command: wbinfo -t
+      register: trust_test
+      ignore_errors: yes
+      when: wbinfo_exists.stat.exists
+      
+    - name: Show trust test result
+      debug:
+        var: trust_test
+      when: wbinfo_exists.stat.exists

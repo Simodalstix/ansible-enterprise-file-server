@@ -1,5 +1,5 @@
 ---
-- name: Install Samba packages
+- name: Install Samba packages (Ubuntu)
   apt:
     name:
       - samba
@@ -8,6 +8,18 @@
       - krb5-user
       - realmd
     state: present
+  when: ansible_os_family == "Debian"
+
+- name: Install Samba packages (RHEL)
+  dnf:
+    name:
+      - samba
+      - samba-common
+      - samba-winbind
+      - krb5-workstation
+      - realmd
+    state: present
+  when: ansible_os_family == "RedHat"
 
 - name: Create storage directories
   file:
@@ -36,10 +48,10 @@
   shell: |
     echo "{{ ad_admin_password }}" | realm join -U {{ ad_admin_user }} {{ ad_domain }}
   register: domain_join
-  failed_when: domain_join.rc != 0 and "already joined" not in domain_join.stderr
+  failed_when: domain_join.rc != 0 and "Already joined" not in domain_join.stderr
   changed_when: domain_join.rc == 0
 
-- name: Start and enable services
+- name: Start and enable services (Ubuntu)
   systemd:
     name: "{{ item }}"
     enabled: yes
@@ -48,3 +60,22 @@
     - smbd
     - nmbd
     - winbind
+  when: ansible_os_family == "Debian"
+
+- name: Start and enable Samba services (RHEL)
+  systemd:
+    name: "{{ item }}"
+    enabled: yes
+    state: started
+  loop:
+    - smb
+    - nmb
+  when: ansible_os_family == "RedHat"
+
+- name: Start and enable winbind (RHEL)
+  systemd:
+    name: winbind
+    enabled: yes
+    state: started
+  when: ansible_os_family == "RedHat"
+  ignore_errors: yes
