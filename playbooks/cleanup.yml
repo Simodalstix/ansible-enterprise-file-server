@@ -1,0 +1,70 @@
+---
+- name: Cleanup Enterprise File Server
+  hosts: all
+  become: yes
+  tasks:
+    # Stop and disable Samba services
+    - name: Stop Samba services (RHEL)
+      systemd:
+        name: "{{ item }}"
+        enabled: no
+        state: stopped
+      loop:
+        - smb
+        - nmb
+        - winbind
+      when: ansible_os_family == "RedHat"
+      ignore_errors: yes
+
+    - name: Stop Samba services (Ubuntu)
+      systemd:
+        name: "{{ item }}"
+        enabled: no
+        state: stopped
+      loop:
+        - smbd
+        - nmbd
+        - winbind
+      when: ansible_os_family == "Debian"
+      ignore_errors: yes
+
+    # Stop NFS services
+    - name: Stop NFS services (RHEL)
+      systemd:
+        name: "{{ item }}"
+        enabled: no
+        state: stopped
+      loop:
+        - nfs-server
+        - rpcbind
+      when: ansible_os_family == "RedHat"
+      ignore_errors: yes
+
+    - name: Stop NFS services (Ubuntu)
+      systemd:
+        name: "{{ item }}"
+        enabled: no
+        state: stopped
+      loop:
+        - nfs-kernel-server
+        - rpcbind
+      when: ansible_os_family == "Debian"
+      ignore_errors: yes
+
+    # Remove cron jobs
+    - name: Remove backup cron jobs
+      cron:
+        name: "{{ item }}"
+        state: absent
+      loop:
+        - "Backup job"
+        - "Backup cleanup"
+        - "Storage monitoring"
+        - "Azure blob sync"
+        - "AWS S3 sync"
+      ignore_errors: yes
+
+    # Leave AD domain (optional - comment out if you want to keep it)
+    # - name: Leave AD domain
+    #   command: realm leave
+    #   ignore_errors: yes

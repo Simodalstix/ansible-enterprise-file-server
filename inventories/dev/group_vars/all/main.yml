@@ -4,10 +4,15 @@ environment: "{{ env | default('dev') }}"
 
 # Network Configuration  
 network_subnet: 192.168.198.0/24
-file_server_ip: 192.168.198.141
+file_server_ip: 192.168.198.132
 dns_servers:
-  - 192.168.198.10  # AD Server
+  - 192.168.198.10  # Windows Server (AD)
   - 8.8.8.8
+
+# External Infrastructure Integration
+elk_platform_ip: 192.168.198.134
+security_platform_ip: 192.168.198.133
+jenkins_server_ip: 192.168.1.157
 
 # Security Configuration
 firewall_enabled: true

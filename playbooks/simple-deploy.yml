@@ -1,0 +1,22 @@
+---
+- name: Simple File Server (No AD)
+  hosts: file_servers
+  become: yes
+  roles:
+    - common
+    - nfs-server
+
+- name: Configure Backup Server
+  hosts: backup_servers
+  become: yes
+  roles:
+    - common
+    - backup
+    - monitoring
+
+- name: Configure Client Workstation
+  hosts: clients
+  become: yes
+  roles:
+    - common
+    - autofs

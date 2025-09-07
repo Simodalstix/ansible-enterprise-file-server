@@ -5,6 +5,8 @@
 *.retry
 logs/
 .vault_pass
+ansible.log
+*.log
 
 # Terraform (for future cloud extensions)
 *.tfstate

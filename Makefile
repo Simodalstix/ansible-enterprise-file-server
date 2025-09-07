@@ -1,7 +1,10 @@
 .PHONY: bootstrap deploy health-check backup-test clean
 
 # Main deployment commands
-bootstrap: deploy health-check
+validate:
+	ansible-playbook -i inventories/dev/hosts.yml playbooks/validate.yml
+
+bootstrap: validate deploy health-check
 	@echo "✅ Enterprise file server platform deployed successfully"
 
 deploy:
@@ -37,6 +40,9 @@ startup-check:
 
 # Utility commands
 clean:
+	ansible-playbook -i inventories/dev/hosts.yml playbooks/cleanup.yml
+
+cleanup-services:
 	ansible-playbook -i inventories/dev/hosts.yml playbooks/cleanup.yml
 
 syntax-check:

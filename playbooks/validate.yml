@@ -1,0 +1,42 @@
+---
+- name: Pre-Flight Validation
+  hosts: all
+  gather_facts: yes
+  tasks:
+    - name: Test connectivity
+      ping:
+      
+    - name: Check disk space
+      shell: df -h / | tail -1 | awk '{print $4}'
+      register: disk_space
+      
+    - name: Validate disk space
+      assert:
+        that: 
+          - disk_space.stdout | regex_replace('G.*', '') | int > 10
+        fail_msg: "Insufficient disk space: {{ disk_space.stdout }}"
+        
+    - name: Check memory
+      shell: free -m | grep Mem | awk '{print $2}'
+      register: memory_mb
+      
+    - name: Validate memory for file server
+      assert:
+        that:
+          - memory_mb.stdout | int > 3000
+        fail_msg: "File server needs 4GB+ RAM, has {{ memory_mb.stdout }}MB"
+      when: inventory_hostname in groups['file_servers']
+      
+    - name: Test DNS resolution
+      shell: nslookup {{ ad_domain }}
+      register: dns_test
+      ignore_errors: yes
+      
+    - name: Show validation results
+      debug:
+        msg: |
+          Host: {{ inventory_hostname }}
+          IP: {{ ansible_host }}
+          Disk: {{ disk_space.stdout }}
+          Memory: {{ memory_mb.stdout }}MB
+          DNS: {{ 'OK' if dns_test.rc == 0 else 'FAILED' }}
